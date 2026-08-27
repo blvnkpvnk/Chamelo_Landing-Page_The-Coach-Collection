@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Coach Collection — Chamelo × Patrick Mouratoglou</title>
+  <meta name="description" content="Reserve The Coach Collection by Chamelo and Patrick Mouratoglou — the Vantage acetate aviator and the Ace tennis shield, both with Eclipse™ instant-tint lenses. $20 to reserve." />
+
+  <!-- Self-hosted fonts: preload the two most-used display weights -->
+  <link rel="preload" as="font" type="font/otf" href="fonts/TTNormsPro-ExtraBold.otf" crossorigin />
+  <link rel="preload" as="font" type="font/otf" href="fonts/TTNormsPro-Regular.otf" crossorigin />
+  <link rel="stylesheet" href="css/custom/style.css" />
+
+  <!-- ===================================================================
+       TODO: CONFIRM CHECKOUT CHAMP TRACKING / PIXEL — no reference snippet
+       supplied. Paste the <head> pixel + analytics scripts (scroll depth,
+       video plays, add-to-cart, checkout) from a prior completed Checkout
+       Champ page here, verbatim. Do not invent tracking IDs.
+       =================================================================== -->
+</head>
+<body>
+  <a class="skip" href="#picker">Skip to reserving</a>
+
+  <!-- ================= Announcement bar ================= -->
+  <div class="announce">Limited first release · Reserve The Coach Collection before public launch</div>
+
+  <!-- ================= Header ================= -->
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="#hero" aria-label="Chamelo — The Mouratoglou Collection">
+        <img src="images/logo/chamelo-wordmark-white.svg" alt="Chamelo" />
+        <span class="tag">The Mouratoglou Collection</span>
+      </a>
+      <a class="btn btn-blue" href="#picker">Reserve</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= 1. SHARED HERO ================= -->
+    <!-- NOTE: this hero copy is NEW (neither source page has a combined hero).
+         Kept short and factual; every spec below is sourced from the two pages.
+         TODO: CONFIRM final combined hero headline/tagline with brand. -->
+    <section class="hero s-dark" id="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <p class="eyebrow">The Mouratoglou Collection</p>
+          <h1 class="display">One collection.<br /><span class="hl">Every light.</span></h1>
+          <p class="lead">
+            Two frames created with Patrick Mouratoglou — the <strong>Vantage</strong> acetate
+            aviator and the <strong>Ace</strong> tennis shield. Both run Eclipse™ instant-tint
+            lenses that shift from light to dark in 0.1 seconds, so one frame covers full sun to indoors.
+          </p>
+          <p class="hero-spec">
+            Vantage: acetate aviator · Smoke Eclipse™ lenses · open-ear audio<br />
+            Ace: tennis shield · high-contrast amber lens · blue Revo mirror
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-blue" href="#picker">Choose your frame</a>
+            <a class="btn btn-ghost" href="#eclipse">See it change</a>
+          </div>
+          <p class="hero-note"><strong>$20 to reserve.</strong> Deposit is applied to your final purchase.</p>
+        </div>
+
+        <div class="hero-media">
+          <!-- Motion element: the lens auto-cycles light↔dark (real animation,
+               not a static photo). A real product-change hero video can drop in
+               over this later. -->
+          <!-- TODO: CONFIRM HERO VIDEO ASSET — the live Vantage page used a
+               looping hero video of the lens changing; no video file was
+               supplied. When available, add a muted/loop/autoplay/playsinline,
+               lazy-loaded <video poster="…"> here as the primary hero visual
+               and keep this animated lens as the fallback. -->
+          <div class="lensbox auto" id="heroLens" style="--tint:.5">
+            <img class="scene" src="images/lifestyle/patrick-vantage-court.jpg"
+                 alt="Patrick Mouratoglou courtside in Chamelo Vantage aviators, coaching with a racket in hand under a bright blue sky" />
+            <div class="tint"></div>
+            <div class="glare"></div>
+            <span class="badge">Eclipse™ · 0.1 sec</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= Stat strip (shared, all sourced) ================= -->
+    <section class="stats s-dark2" aria-label="Collection highlights">
+      <div class="grid">
+        <div class="stat"><div class="n"><b>0.1</b> SEC</div><div class="l">Instant tint adjustment</div></div>
+        <div class="stat"><div class="n">100% UV</div><div class="l">UVA/UVB protection at every tint level</div></div>
+        <div class="stat"><div class="n">2 FRAMES</div><div class="l">Aviator + tennis shield</div></div>
+        <div class="stat"><div class="n">COURT-TESTED</div><div class="l">Created with Patrick Mouratoglou</div></div>
+      </div>
+    </section>
+
+    <!-- ================= 2. PRODUCT PICKER / COMPARISON ================= -->
+    <section class="section s-light" id="picker">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">Choose your frame</p>
+          <h2 class="h2">Two frames, one instant-tint collection.</h2>
+          <p class="lead">Pick the frame that matches how you play and move. Both reserve for $20 today,
+            applied to your final purchase.</p>
+        </div>
+
+        <div class="picker">
+          <!-- Vantage card -->
+          <article class="pcard vantage">
+            <div class="shot">
+              <img src="images/product/vantage-front.png" loading="lazy"
+                   alt="Chamelo Vantage aviator in glossy black acetate with smoke gradient Eclipse lenses and temple controls, three-quarter view" />
+            </div>
+            <div class="body">
+              <span class="kicker">Vantage · Acetate aviator</span>
+              <h3>Vantage</h3>
+              <p>A handcrafted black acetate aviator with instant tint control and open-ear audio —
+                one refined frame from full sun to indoors.</p>
+              <div class="spec">Black acetate frame · Smoke Eclipse™ lenses · Open-ear audio</div>
+              <button class="btn btn-blue btn-block" type="button" data-reserve="vantage">Reserve Vantage for $20</button>
+            </div>
+          </article>
+
+          <!-- Ace card -->
+          <article class="pcard ace">
+            <div class="shot">
+              <img src="images/product/ace-front.png" loading="lazy"
+                   alt="Chamelo Ace tennis shield in matte black with a blue Revo mirror finish and high-contrast amber interior lens, three-quarter view" />
+            </div>
+            <div class="body">
+              <span class="kicker">Ace · Tennis shield</span>
+              <h3>Ace</h3>
+              <p>A tennis-tuned shield that slides between four tint levels in 0.1 seconds and
+                sharpens the ball through a high-contrast lens.</p>
+              <div class="spec">Matte black frame · High-contrast amber lens · Blue Revo mirror finish</div>
+              <button class="btn btn-blue btn-block" type="button" data-reserve="ace">Reserve Ace for $20</button>
+            </div>
+          </article>
+        </div>
+
+        <!-- "Which one is right for me" comparison -->
+        <div class="compare" role="table" aria-label="Compare Vantage and Ace">
+          <div class="row-h" role="row"><span role="columnheader"></span><span role="columnheader">Vantage</span><span role="columnheader">Ace</span></div>
+          <div role="row"><span class="k" role="rowheader">Frame</span><span class="v" role="cell">Acetate aviator</span><span class="v" role="cell">Tennis shield</span></div>
+          <div role="row"><span class="k" role="rowheader">Lens</span><span class="v" role="cell">Smoke Eclipse™</span><span class="v" role="cell">High-contrast amber, blue Revo</span></div>
+          <div role="row"><span class="k" role="rowheader">Open-ear audio</span><span class="v" role="cell">Yes — calls, music, voice</span><span class="v" role="cell">No</span></div>
+          <div role="row"><span class="k" role="rowheader">Best for</span><span class="v" role="cell">Court to car to dinner</span><span class="v" role="cell">Match play, fast tracking</span></div>
+          <div role="row"><span class="k" role="rowheader">Reserve</span><span class="v" role="cell">$20</span><span class="v" role="cell">$20</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 3. ECLIPSE INSTANT TINT (shared) ================= -->
+    <section class="section s-dark" id="eclipse">
+      <div class="wrap">
+        <!-- The problem framing + side-by-side comparison (from Ace page) -->
+        <div class="split" style="margin-bottom:clamp(48px,7vw,90px)">
+          <div>
+            <p class="eyebrow">The problem</p>
+            <h2 class="h2">The light plays every point.</h2>
+            <p class="lead" style="margin-top:20px">At one end you face straight into the sun; at the other it
+              sits behind you. Cloud, shade, floodlights and a walk indoors change it again.</p>
+            <p class="lead" style="margin-top:16px">A fixed lens is right only part of the time, and photochromic
+              lenses decide <em>when</em> to react. Eclipse™ puts the decision back in your hands.</p>
+          </div>
+          <div>
+            <div class="sunshade" role="img" aria-label="Illustration: one lens shown at its light 'sun end' beside its dark 'shade end'">
+              <div class="end sun"><span class="tagend">Sun end</span></div>
+              <div class="end shade"><span class="tagend">Shade end</span></div>
+              <div class="lensfloat"></div>
+              <div class="foot"><span>Serving into direct light</span><span>Sun behind you</span></div>
+            </div>
+            <p class="caption">Illustrative only — one lens, shifting between ends</p>
+          </div>
+        </div>
+
+        <div style="text-align:center; max-width:60ch; margin-inline:auto">
+          <p class="eyebrow" style="color:var(--gold)">Eclipse™ instant tint</p>
+          <h2 class="h2">Dark into the sun. Light in the shade.</h2>
+          <p class="lead" style="margin:20px auto 0">Both frames use Eclipse™ lenses. Change the tint in 0.1
+            seconds and keep 100% UVA/UVB protection at every level — no lens swap, no waiting for UV.
+            Depending on the frame, control it by sliding or tapping the temple, or with your voice.</p>
+        </div>
+
+        <!-- Interactive tint slider demo (motion + numeric/text state, not colour-only) -->
+        <div class="eclipse-demo">
+          <div class="lensbox" id="eclipseLens" style="--tint:.30">
+            <img class="scene" src="images/lifestyle/patrick-ace-court.jpg" loading="lazy"
+                 alt="View through the lens: Patrick Mouratoglou on a clay court, shown getting darker as the tint slider moves" />
+            <div class="tint"></div>
+            <div class="glare"></div>
+            <span class="badge">0.1 sec adjustment</span>
+            <div class="readout">
+              <div class="lvl" id="lensLvl">Level 1 of 4</div>
+              <div class="vlt" id="lensVlt">54% VLT</div>
+            </div>
+          </div>
+
+          <div class="slider-wrap">
+            <div class="slider-label">Slide to control the light</div>
+            <input type="range" id="tintSlider" min="0" max="3" step="1" value="0"
+                   aria-label="Eclipse tint level" aria-valuetext="Level 1 of 4, 54% VLT" />
+            <div class="ticks" id="tintTicks">
+              <span class="on">54% VLT</span><span>Level 2</span><span>Level 3</span><span>17% VLT</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- How it works + speed claim -->
+        <div class="tech-grid">
+          <div class="t"><div class="k">0.1 sec</div><div class="d">Eclipse™ electrochromic lenses darken on demand — an ultra-thin layer, not a UV reaction.</div></div>
+          <div class="t"><div class="k">54% → 17%</div><div class="d">Four tint levels on Ace, from a light 54% VLT to a dark 17% VLT.</div></div>
+          <!-- TODO: CONFIRM — "1,800× faster than photochromic" appears in the QA
+               checklist as the speed substantiation, but not on either product
+               page. Verify before publishing this comparative claim. -->
+          <div class="t"><div class="k">On demand</div><div class="d">Responds when you choose — not when a photochromic lens decides conditions have changed.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4a. ACE DEEP DIVE — tennis lens ================= -->
+    <section class="section s-light">
+      <div class="wrap">
+        <div class="row rev">
+          <div class="col-media">
+            <div class="media">
+              <img src="images/lifestyle/patrick-ace-court.jpg" loading="lazy"
+                   alt="Patrick Mouratoglou on a clay court wearing the Chamelo Ace tennis shield with blue mirror lenses" />
+            </div>
+            <p class="figcap">Ace tennis-tuned lens — blue Revo exterior, high-contrast amber interior</p>
+          </div>
+          <div class="col-copy">
+            <p class="eyebrow" style="color:var(--blue-hover)">Ace · See the ball earlier</p>
+            <h2 class="h2">Built for what moves fastest.</h2>
+            <p class="lead" style="margin-top:20px">The high-contrast amber lens is tuned to sharpen the tennis
+              ball against court surfaces and modern LED backdrops. A blue Revo mirror finish controls the
+              exterior look while the interior lens gives the player clearer visual information.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ace 4-feature grid — DISTINCT captions (base-template duplicate-caption bug fixed) -->
+    <section class="section s-dark">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">Ace · Match conditions, handled</p>
+          <h2 class="h2">Everything else stays out of the way.</h2>
+        </div>
+        <div class="fgrid">
+          <article class="fcard">
+            <div class="ic"><img src="images/icons/premium-materials-white.svg" alt="" aria-hidden="true" /></div>
+            <div class="txt"><div class="num">01</div><h4>Sweat sheds</h4>
+              <p>Hydrophobic and oleophobic coatings help sweat and smudges move away from the viewing area.</p></div>
+          </article>
+          <article class="fcard">
+            <div class="ic"><img src="images/icons/design-sport-white.svg" alt="" aria-hidden="true" /></div>
+            <div class="txt"><div class="num">02</div><h4>Fog stays out</h4>
+              <p>An interior anti-fog coating helps maintain clarity through intense play.</p></div>
+          </article>
+          <article class="fcard">
+            <div class="ic"><img src="images/icons/no-slip-grip-white.svg" alt="" aria-hidden="true" /></div>
+            <div class="txt"><div class="num">03</div><h4>Nothing slips</h4>
+              <p>Grippy ear tips and a slim nose piece help keep the frame locked in through rapid changes of direction.</p></div>
+          </article>
+          <article class="fcard">
+            <div class="ic"><img src="images/icons/tint-speed-white.svg" alt="" aria-hidden="true" /></div>
+            <div class="txt"><div class="num">04</div><h4>No waiting</h4>
+              <p>Ace responds when you move the slider — not when a photochromic lens decides conditions have changed.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 4b. VANTAGE DEEP DIVE — audio + materials ======= -->
+    <section class="section s-light">
+      <div class="wrap">
+        <div class="row">
+          <div class="col-media">
+            <div class="media">
+              <img src="images/lifestyle/patrick-vantage-temple.jpg" loading="lazy"
+                   alt="Patrick Mouratoglou courtside touching the temple of his Chamelo Vantage aviators to control the lens, tennis balls in hand" />
+            </div>
+            <p class="figcap">Patrick courtside, taking a call through Vantage’s open-ear speakers while following the match</p>
+          </div>
+          <div class="col-copy">
+            <p class="eyebrow" style="color:var(--blue-hover)">Vantage · Hear what matters</p>
+            <h2 class="h2">Hear what matters. Stay in the moment.</h2>
+            <p class="lead" style="margin-top:20px">Open-ear speakers let you take a call, listen to music, or use
+              voice control without blocking the world around you.</p>
+            <div class="pills">
+              <span class="pill">Calls</span><span class="pill">Music</span>
+              <span class="pill">Voice control</span><span class="pill">Open-ear awareness</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section s-white">
+      <div class="wrap">
+        <div class="sec-head" style="max-width:52ch">
+          <p class="eyebrow" style="color:var(--blue-hover)">Vantage · Real eyewear first</p>
+          <h2 class="h2">Technology that doesn’t look like technology.</h2>
+          <p class="lead" style="margin-top:18px">Vantage is built as a premium aviator first: handcrafted black
+            acetate, restrained detailing, a timeless silhouette, and smoke lenses that keep the technology
+            discreet. Light enough for movement. Refined enough for everywhere after.</p>
+        </div>
+
+        <div class="row" style="margin-bottom:clamp(28px,4vw,48px)">
+          <div class="col-media">
+            <div class="media shot"><img src="images/product/vantage-angle.png" loading="lazy"
+              alt="Chamelo Vantage aviator, front three-quarter studio view in glossy black acetate with smoke lenses" /></div>
+          </div>
+          <div class="col-media">
+            <div class="media shot"><img src="images/product/vantage-arm.png" loading="lazy"
+              alt="Chamelo Vantage aviator, side view showing the temple arm with touch controls and rubberized ear tip" /></div>
+          </div>
+        </div>
+
+        <div class="matlist">
+          <div class="m"><span class="n">01</span><div><h4>Acetate finish</h4><p>Handcrafted, hand-finished black acetate with depth you can see up close.</p></div></div>
+          <div class="m"><span class="n">02</span><div><h4>Aviator silhouette</h4><p>A timeless shape that reads as eyewear, never as equipment.</p></div></div>
+          <div class="m"><span class="n">03</span><div><h4>Smoke lenses</h4><p>Smoke Eclipse™ lenses keep the tint technology discreet at every level.</p></div></div>
+          <div class="m"><span class="n">04</span><div><h4>Temple controls</h4><p>Touch the temple for direct tint control whenever you want it.</p></div></div>
+          <div class="m"><span class="n">05</span><div><h4>Rubberized ear tips</h4><p>A secure, comfortable hold through movement.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 5. CREATED WITH PATRICK (merged) ================= -->
+    <section class="section s-dark" id="patrick">
+      <div class="wrap">
+        <div class="bio">
+          <div class="portrait">
+            <img src="images/lifestyle/patrick-ace-portrait.jpg" loading="lazy"
+                 alt="Portrait of Patrick Mouratoglou wearing the Chamelo Ace shield sunglasses on a clay court" />
+          </div>
+          <div>
+            <p class="eyebrow">Created and court-tested with Patrick</p>
+            <h2 class="h2">Built with the most trusted eye in tennis.</h2>
+            <p class="lead" style="margin-top:20px">Patrick Mouratoglou has spent his career studying the details
+              that decide matches. As a Chamelo shareholder and creator partner, he helped shape both frames — the
+              lens experience, the fit, and the on-court details — and tested them across court, courtside, behind
+              the wheel, and beyond.</p>
+            <blockquote class="quote">
+              <p>“Everything in tennis is control — the grip, the footwork, the breath. Why would you let your
+                sunglasses be the one thing you don’t control?”</p>
+              <p>“I wear them on court, and I keep them on long after. That was the idea — a frame that belongs everywhere.”</p>
+            </blockquote>
+            <p class="attrib">Patrick Mouratoglou — Chamelo shareholder &amp; creator partner</p>
+            <div class="creds">
+              <div>10 Grand Slam titles as a coach</div>
+              <div>Four-time Coach of the Year</div>
+              <div>Founder of the Mouratoglou Academy</div>
+              <div>Created and court-tested with Patrick</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 6. COMBINED RESERVATION ================= -->
+    <section class="section s-dark2" id="reserve">
+      <div class="wrap">
+        <div class="reserve">
+          <div>
+            <p class="eyebrow">First release</p>
+            <h2 class="h2">Get the first advantage.</h2>
+            <p class="lead" style="margin-top:18px">Reserve your Coach Collection frame before public release and
+              secure your place in the limited first production.</p>
+            <ul class="checklist">
+              <li>Guaranteed first-release unit</li>
+              <li>Early checkout access</li>
+              <li>Reservation-only pricing</li>
+              <li>$20 applied to your final purchase</li>
+              <li>Only limited first-release reservations</li>
+            </ul>
+          </div>
+
+          <div class="rescard" id="rescard">
+            <div class="selector" role="group" aria-label="Choose the frame to reserve">
+              <button type="button" data-select="vantage" aria-pressed="true">
+                <span class="t">Vantage</span><br /><span class="s">Aviator · Audio</span>
+              </button>
+              <button type="button" data-select="ace" aria-pressed="false">
+                <span class="t">Ace</span><br /><span class="s">Tennis shield</span>
+              </button>
+            </div>
+
+            <div class="priceline">
+              <span class="k">Reserving</span>
+              <span class="v"><span id="resName">Vantage</span></span>
+            </div>
+            <div class="priceline">
+              <span class="k">Expected MSRP</span>
+              <!-- TODO: CONFIRM final retail price. Source pages show MSRP "$0"
+                   (a placeholder), so the real figure is unknown. -->
+              <span class="v">TBA</span>
+            </div>
+            <div class="priceline">
+              <span class="k">Reservation price</span><span class="v">$20</span>
+            </div>
+            <div class="priceline due">
+              <span class="k">Due today</span><span class="v">$20</span>
+            </div>
+            <p class="figcap" id="resSpec" style="margin-top:14px">Acetate aviator · Smoke Eclipse™ lenses · Open-ear audio</p>
+
+            <!-- ===============================================================
+                 TODO: CONFIRM CHECKOUT CHAMP FORM INTEGRATION — no reference
+                 snippet supplied. Paste the reservation <form> markup, action
+                 URL, and hidden field names from a prior completed Checkout
+                 Champ page here, changing ONLY the product-name/price fields
+                 (Vantage / Ace, $20). Until then the button below is an inert
+                 placeholder that only scrolls/selects — it does NOT submit an
+                 order. Do not invent an action URL or field names.
+                 =============================================================== -->
+            <div class="formslot">
+              <input type="hidden" id="resProductField" value="Vantage" />
+              <button class="btn btn-blue btn-block" id="resCta" type="button" data-reserve="vantage">Reserve my Vantage for $20</button>
+            </div>
+
+            <p class="fineprint">
+              <!-- TODO: CONFIRM deposit refund policy — source page defers this
+                   ("[CONFIRMED REFUND OR NON-REFUND POLICY]"). -->
+              <span class="todo">Deposit terms will be confirmed before launch.</span><br />
+              Expected release: to be announced.
+              <!-- TODO: CONFIRM number of first-release slots — source shows
+                   "[NUMBER OF SLOTS]" placeholder. -->
+            </p>
+          </div>
+        </div>
+
+        <!-- Logistics / risk reversal (values below are from the QA checklist,
+             not the product pages) -->
+        <!-- TODO: CONFIRM these store-standard terms apply to first-release
+             reservation units (free shipping $69+, 2-day fulfillment / 4–7 day
+             delivery, 30-day money-back, 1-year warranty). Sourced from
+             Landing_Page_Checklist.xlsx. -->
+        <div class="logi">
+          <div class="li"><div class="h">Free shipping over $69</div><div class="p">Called out at checkout.</div></div>
+          <div class="li"><div class="h">2-day fulfillment</div><div class="p">4–7 day delivery.</div></div>
+          <div class="li"><div class="h">30-day money-back</div><div class="p">Guarantee on final purchase.</div></div>
+          <div class="li"><div class="h">1-year warranty</div><div class="p">On Chamelo eyewear.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 7. COMBINED FAQ ================= -->
+    <section class="section s-white" id="faq">
+      <div class="wrap">
+        <div style="text-align:center; margin-bottom:clamp(24px,4vw,44px)">
+          <p class="eyebrow" style="color:var(--blue-hover)">Questions</p>
+          <h2 class="h2">Before you reserve</h2>
+        </div>
+
+        <div class="faq">
+          <p class="cat">Your reservation</p>
+          <details open>
+            <summary>What does my deposit include?</summary>
+            <div class="a">Your $20 deposit guarantees a first-release unit, early checkout access, and
+              reservation-only pricing. The full $20 is applied to your final purchase.</div>
+          </details>
+          <details>
+            <summary>When will I pay the remaining balance?</summary>
+            <div class="a">You pay $20 today. The remaining balance is due before your order ships.</div>
+          </details>
+          <details>
+            <summary>Is the deposit refundable?</summary>
+            <div class="a"><span class="todo">TODO: CONFIRM — deposit terms, including refundability, will be
+              confirmed before launch. (The source pages defer this policy.)</span></div>
+          </details>
+          <details>
+            <summary>What happens if I don’t complete the final purchase?</summary>
+            <div class="a"><span class="todo">TODO: CONFIRM — outcome if the final purchase isn’t completed is
+              part of the deposit terms still to be confirmed before launch.</span></div>
+          </details>
+          <details>
+            <summary>When will The Coach Collection launch?</summary>
+            <div class="a">Expected release is to be announced. <span class="todo">TODO: CONFIRM launch date.</span></div>
+          </details>
+
+          <p class="cat">Ace (tennis shield)</p>
+          <details>
+            <summary>Is Ace made specifically for tennis?</summary>
+            <div class="a">Yes. Ace is a tennis-tuned shield with a high-contrast amber lens designed to sharpen
+              the ball against court surfaces and LED backdrops, plus anti-fog and sweat-shedding coatings and a
+              locked-in fit for rapid changes of direction.</div>
+          </details>
+          <details>
+            <summary>Is Ace photochromic?</summary>
+            <div class="a">No. Eclipse™ lenses are electrochromic — they change on demand in 0.1 seconds when you
+              move the slider, rather than reacting to UV like photochromic lenses.</div>
+          </details>
+          <details>
+            <summary>Which Ace colorway am I reserving?</summary>
+            <div class="a">Matte black frame with a high-contrast amber lens and a blue Revo mirror finish (Black / Blue).</div>
+          </details>
+
+          <p class="cat">Vantage (acetate aviator)</p>
+          <details>
+            <summary>Which Vantage version am I reserving?</summary>
+            <div class="a">Vantage in Black — handcrafted acetate frame, Smoke Eclipse™ lenses, and open-ear audio.</div>
+          </details>
+          <details>
+            <summary>How does the tint change?</summary>
+            <div class="a">Change the smoke lens tint in 0.1 seconds — tap the temple for direct control or use
+              voice control when your hands are occupied.</div>
+          </details>
+
+          <p class="cat">Lenses, care &amp; coverage</p>
+          <details>
+            <summary>Do the lenses protect against UV?</summary>
+            <div class="a">Yes — 100% UVA/UVB protection at every tint level.</div>
+          </details>
+          <details>
+            <summary>How do the lenses get power, and what’s the battery life?</summary>
+            <div class="a">Eclipse™ electrochromic lenses are powered/rechargeable.
+              <span class="todo">TODO: CONFIRM charging method and battery life — not stated on the source pages.</span></div>
+          </details>
+          <details>
+            <summary>Are prescription (RX) lenses available?</summary>
+            <div class="a"><span class="todo">TODO: CONFIRM prescription / RX availability — not stated in the reference materials.</span></div>
+          </details>
+          <details>
+            <summary>Is there a warranty and return policy?</summary>
+            <div class="a">Chamelo eyewear is backed by a 1-year warranty and a 30-day money-back guarantee.
+              <span class="todo">TODO: CONFIRM these standard terms apply to first-release reservation units (sourced from the QA checklist).</span></div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 8. FINAL CTA ================= -->
+    <section class="section s-dark finalcta">
+      <div class="wrap">
+        <h2 class="h2">The light changes.<br />So should your lens.</h2>
+        <p class="lead" style="margin:18px auto 26px; text-align:center">Reserve The Coach Collection before the
+          limited first release is claimed.</p>
+        <a class="btn btn-blue" href="#picker">Reserve for $20</a>
+        <p class="sub">Guaranteed unit · Early access · Reservation-only pricing</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="m">Chamelo — The Mouratoglou Collection · Vantage + Ace</p>
+  </footer>
+
+  <!-- ================= Sticky reserve bar (persistent CTA) ================= -->
+  <div class="stickybar" id="stickybar" aria-label="Reserve">
+    <div class="in">
+      <div class="who">
+        <span class="name" id="stkName">Vantage</span>
+        <span class="meta" id="stkMeta">Black / Smoke / Audio</span>
+      </div>
+      <div class="switch" role="group" aria-label="Switch frame">
+        <button type="button" data-stk="vantage" aria-pressed="true">Vantage</button>
+        <button type="button" data-stk="ace" aria-pressed="false">Ace</button>
+      </div>
+      <a class="btn btn-blue" href="#reserve" data-reserve-jump>$20 · Reserve</a>
+    </div>
+  </div>
+
+  <script src="js/custom/custom.js" defer></script>
+  <!-- TODO: CONFIRM CHECKOUT CHAMP CONVERSION TRACKING — paste the end-of-body
+       pixel / event scripts (add-to-cart, checkout, video plays) from a prior
+       completed Checkout Champ page here, verbatim. -->
+</body>
+</html>
