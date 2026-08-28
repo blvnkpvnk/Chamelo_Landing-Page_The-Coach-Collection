@@ -24,7 +24,13 @@ inline `<!-- TODO: CONFIRM … -->` (see list at the bottom).
 8. Final CTA + persistent sticky reserve bar with product switch.
 
 ## Motion
-- Hero lens auto-cycles light↔dark; interactive Eclipse tint slider.
+- **Hero**: full-bleed looping background video of Patrick Mouratoglou with a
+  dark left→right gradient scrim for text legibility and a bottom-right
+  pause/play control. The MP4 (`videos/patrick-hero.mp4`, ~0.9 MB, muted/loop/
+  playsinline, poster fallback) was assembled from the supplied Patrick/Vantage
+  stills (slow zoom + crossfades) as a stand-in — see the TODO to swap a real
+  brand video. Reduced-motion visitors get the poster, not autoplay.
+- Interactive Eclipse tint slider (still the "product changing" demo).
 - **Scroll-reveal**: scroll-driven and repeatable — each element stays hidden
   until you scroll down to it, then fades/rises in, and resets once it drops back
   below the viewport so scrolling down re-plays it. Self-contained inline script,
@@ -67,7 +73,7 @@ QA steps).
 ## Every `TODO: CONFIRM` left in the code
 1. `<head>` — Checkout Champ tracking/pixel snippet (not invented).
 2. Hero — final combined hero headline/tagline (new copy) needs brand sign-off.
-3. Hero — real looping product-change **video** asset (Vantage page had one; not supplied).
+3. Hero — the looping hero **video** is a stand-in built from supplied stills; swap in a real brand hero video (`videos/patrick-hero.mp4`) when available.
 4. Eclipse — "1,800× faster than photochromic" (in checklist only, not on product pages).
 5. Reserve — final retail **MSRP** (source shows `$0` placeholder).
 6. Reserve — **Checkout Champ `<form>` / action URL / hidden fields** (no reference snippet).

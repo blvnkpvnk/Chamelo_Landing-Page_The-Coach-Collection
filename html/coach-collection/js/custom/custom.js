@@ -122,6 +122,28 @@
     io.observe(hero);
   }
 
+  /* ---------------- Hero background video pause/play ---------------- */
+  function initHeroVideo() {
+    var v = $("#heroVideo"), btn = $("#heroToggle");
+    if (!v || !btn) return;
+    var setState = function (paused) {
+      btn.classList.toggle("is-paused", paused);
+      btn.setAttribute("aria-pressed", String(!paused));
+      btn.setAttribute("aria-label", paused ? "Play background video" : "Pause background video");
+    };
+    // Don't autoplay for visitors who prefer reduced motion — show the poster.
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) { try { v.autoplay = false; v.pause(); } catch (e) {} }
+    else { try { v.muted = true; var pp = v.play(); if (pp && pp.catch) pp.catch(function () {}); } catch (e) {} }
+    btn.addEventListener("click", function () {
+      if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      else { v.pause(); }
+    });
+    v.addEventListener("play", function () { setState(false); });
+    v.addEventListener("pause", function () { setState(true); });
+    setState(v.paused);
+  }
+
   // NOTE: scroll-reveal is handled by the self-contained inline script in
   // <head> (see coach-collection.html) so that hiding and revealing share the
   // same fate — if that script can't run, nothing is ever hidden.
@@ -130,6 +152,7 @@
     initSlider();
     initSelector();
     initSticky();
+    initHeroVideo();
     setProduct("vantage");
   });
 })();

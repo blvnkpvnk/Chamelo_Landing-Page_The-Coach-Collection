@@ -133,7 +133,21 @@
          Kept short and factual; every spec below is sourced from the two pages.
          TODO: CONFIRM final combined hero headline/tagline with brand. -->
     <section class="hero s-dark" id="hero">
-      <div class="wrap">
+      <!-- Full-bleed looping background video of Patrick Mouratoglou.
+           TODO: CONFIRM HERO VIDEO ASSET — this loop was assembled from the
+           supplied Patrick/Vantage lifestyle stills (slow motion + crossfades)
+           as a stand-in. Swap in a real brand hero video when available; keep
+           it muted/loop/playsinline with the poster as the fallback frame. -->
+      <div class="hero-video">
+        <video id="heroVideo" autoplay muted loop playsinline preload="auto"
+               poster="images/lifestyle/patrick-hero-poster.jpg"
+               aria-label="Patrick Mouratoglou coaching on court in Chamelo Vantage aviators">
+          <source src="videos/patrick-hero.mp4" type="video/mp4" />
+        </video>
+        <div class="hero-scrim"></div>
+      </div>
+
+      <div class="wrap hero-inner">
         <div class="hero-copy">
           <p class="eyebrow">The Coach Collection</p>
           <h1 class="display">One collection.<br /><span class="hl">Every light.</span></h1>
@@ -152,25 +166,12 @@
           </div>
           <p class="hero-note"><strong>$20 to reserve.</strong> Deposit is applied to your final purchase.</p>
         </div>
-
-        <div class="hero-media">
-          <!-- Motion element: the lens auto-cycles light↔dark (real animation,
-               not a static photo). A real product-change hero video can drop in
-               over this later. -->
-          <!-- TODO: CONFIRM HERO VIDEO ASSET — the live Vantage page used a
-               looping hero video of the lens changing; no video file was
-               supplied. When available, add a muted/loop/autoplay/playsinline,
-               lazy-loaded <video poster="…"> here as the primary hero visual
-               and keep this animated lens as the fallback. -->
-          <div class="lensbox auto" id="heroLens" style="--tint:.5">
-            <img class="scene" src="images/lifestyle/patrick-vantage-court.jpg"
-                 alt="Patrick Mouratoglou courtside in Chamelo Vantage aviators, coaching with a racket in hand under a bright blue sky" />
-            <div class="tint"></div>
-            <div class="glare"></div>
-            <span class="badge">Eclipse™ · 0.1 sec</span>
-          </div>
-        </div>
       </div>
+
+      <button id="heroToggle" class="hero-toggle" type="button" aria-label="Pause background video" aria-pressed="true">
+        <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
     </section>
 
     <!-- ================= Stat strip (shared, all sourced) ================= -->
