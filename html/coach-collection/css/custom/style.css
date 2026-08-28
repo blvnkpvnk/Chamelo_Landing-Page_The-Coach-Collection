@@ -131,6 +131,7 @@ h1{font-weight:900}
 .site-header .wrap{display:flex; align-items:center; justify-content:space-between; padding-block:14px}
 .brand{display:flex; align-items:center; gap:14px}
 .brand img{height:22px; width:auto}
+.brand .brand-logo{height:22px; width:auto; color:#fff; display:block}
 .brand .tag{
   font-family:var(--mono); font-size:10.5px; letter-spacing:.2em;
   text-transform:uppercase; color:var(--muted-on-dark);
