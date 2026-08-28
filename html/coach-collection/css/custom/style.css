@@ -156,7 +156,8 @@ h1{font-weight:900}
   min-height:clamp(560px,86vh,880px); display:flex; align-items:center}
 /* full-bleed background video */
 .hero-video{position:absolute; inset:0; z-index:0}
-.hero-video video{width:100%; height:100%; object-fit:cover; object-position:72% center; display:block}
+.hero-video video,
+.hero-video .hero-media-img{width:100%; height:100%; object-fit:cover; object-position:72% center; display:block}
 .hero-scrim{position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
     linear-gradient(90deg, rgba(7,8,10,.97) 0%, rgba(7,8,10,.92) 24%, rgba(7,8,10,.62) 46%, rgba(7,8,10,.24) 66%, rgba(7,8,10,.04) 100%),
@@ -180,9 +181,11 @@ h1{font-weight:900}
 .hero-copy h1{margin-bottom:22px}
 .hero-spec{
   font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase;
-  color:var(--muted-on-dark); border-left:2px solid var(--blue); padding-left:14px;
-  margin:26px 0 30px; line-height:1.9;
+  color:var(--muted-on-dark); margin:26px 0 30px; line-height:1.85;
 }
+.hero-spec p{margin:0; border-left:2px solid var(--blue); padding-left:14px}
+.hero-spec p + p{margin-top:16px}
+.hero-spec strong{color:var(--ink-on-dark); font-weight:800}
 .hero-cta{display:flex; flex-wrap:wrap; gap:14px; align-items:center}
 .hero-note{margin-top:16px; font-size:.9rem; color:var(--muted-on-dark)}
 .hero-note strong{color:var(--ink-on-dark)}
@@ -258,7 +261,7 @@ h1{font-weight:900}
 .pcard .body{padding:clamp(20px,2.4vw,30px); display:flex; flex-direction:column; gap:14px; flex:1}
 .pcard .kicker{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold)}
 .pcard.ace .kicker{color:var(--blue-bright)}
-.pcard h3{font-size:1.9rem}
+.pcard h3{font-size:1.9rem; color:var(--ink-on-dark)}
 .pcard p{color:var(--muted-on-dark); margin:0}
 .pcard .spec{
   font-family:var(--mono); font-size:11px; letter-spacing:.05em; text-transform:uppercase;
@@ -266,13 +269,16 @@ h1{font-weight:900}
 }
 .pcard .btn{margin-top:auto}
 
-/* comparison mini-table */
-.compare{margin-top:clamp(22px,3vw,34px); border:1px solid var(--line-dark); border-radius:14px; overflow:hidden}
+/* comparison table with subtle grid lines */
+.compare{margin-top:clamp(22px,3vw,34px); background:var(--bg-card);
+  border:1px solid var(--line-dark); border-radius:14px; overflow:hidden}
 .compare div{display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:0}
-.compare span{padding:13px 18px; border-top:1px solid var(--line-dark); font-size:.92rem}
-.compare .row-h span{border-top:0; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted-on-dark)}
-.compare .k{color:var(--muted-on-dark)}
-.compare .v{color:var(--ink-on-dark)}
+.compare span{padding:15px 20px; border-top:1px solid var(--line-dark); font-size:.94rem; line-height:1.4}
+.compare span + span{border-left:1px solid var(--line-dark)}      /* vertical grid lines */
+.compare .row-h span{border-top:0; font-weight:800; letter-spacing:.03em;
+  text-transform:uppercase; font-size:.82rem; color:var(--ink-on-dark)}
+.compare .k{color:var(--ink-on-dark); font-weight:700}
+.compare .v{color:var(--muted-on-dark)}
 @media (max-width:760px){ .picker{grid-template-columns:1fr} .compare{font-size:.85rem} }
 
 /* ---------- Problem / sun-shade comparison ----------------------------- */

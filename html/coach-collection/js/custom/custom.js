@@ -1,7 +1,7 @@
 /* ==========================================================================
    The Coach Collection — interaction layer
    - Eclipse™ tint slider (interactive lens motion; numeric + text state)
-   - Reservation product selector (Vantage / Ace) sync
+   - Reservation product selector (Vantage Pro / Ace) sync
    - Sticky reserve bar reveal on scroll
    NOTE: reservation SUBMISSION is intentionally NOT wired here. The Checkout
    Champ <form>, action URL, hidden fields, and pixel are pending the reference
@@ -16,10 +16,10 @@
   /* ---- Product data (all values sourced from the two product pages) ---- */
   var PRODUCTS = {
     vantage: {
-      name: "Vantage",
+      name: "Vantage Pro",
       meta: "Black / Smoke / Audio",
       spec: "Acetate aviator · Smoke Eclipse™ lenses · Open-ear audio",
-      cta: "Reserve my Vantage for $20"
+      cta: "Reserve my Vantage Pro for $20"
     },
     ace: {
       name: "Ace",
@@ -34,35 +34,20 @@
   function $all(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
 
   /* ---------------- Eclipse tint slider ---------------- */
-  // 4 levels. Only the two endpoints have sourced VLT numbers (54% / 17%);
-  // the middle stops are labelled "Level 2 / Level 3" exactly as on the
-  // source pages, so no VLT value is invented.
-  var LEVELS = [
-    { label: "54% VLT", lvl: "Level 1 of 4", tint: 0.30 },
-    { label: "Level 2", lvl: "Level 2 of 4", tint: 0.47 },
-    { label: "Level 3", lvl: "Level 3 of 4", tint: 0.64 },
-    { label: "17% VLT", lvl: "Level 4 of 4", tint: 0.82 }
-  ];
+  // Continuous slider: value 0..1 maps smoothly to lens darkness (light -> dark).
+  var TINT_LIGHT = 0.30, TINT_DARK = 0.82;
 
   function initSlider() {
     var slider = $("#tintSlider");
     if (!slider) return;
     var lens = $("#eclipseLens");
-    var tint = $(".tint", lens);
-    var vltEl = $("#lensVlt");
-    var lvlEl = $("#lensLvl");
-    var ticks = $all("#tintTicks span");
-
-    function apply(i) {
-      var L = LEVELS[i];
-      lens.style.setProperty("--tint", L.tint);
-      if (vltEl) vltEl.textContent = L.label;
-      if (lvlEl) lvlEl.textContent = L.lvl;
-      ticks.forEach(function (t, k) { t.classList.toggle("on", k === i); });
-      slider.setAttribute("aria-valuetext", L.lvl + ", " + L.label);
+    function apply(v) {
+      if (isNaN(v)) v = 0;
+      var t = TINT_LIGHT + v * (TINT_DARK - TINT_LIGHT);
+      lens.style.setProperty("--tint", t.toFixed(3));
     }
-    slider.addEventListener("input", function () { apply(parseInt(slider.value, 10)); });
-    apply(parseInt(slider.value, 10) || 0);
+    slider.addEventListener("input", function () { apply(parseFloat(slider.value)); });
+    apply(parseFloat(slider.value));
   }
 
   /* ---------------- Reservation selector ---------------- */

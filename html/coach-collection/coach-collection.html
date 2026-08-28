@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>The Coach Collection — Chamelo × Patrick Mouratoglou</title>
-  <meta name="description" content="Reserve The Coach Collection by Chamelo and Patrick Mouratoglou — the Vantage acetate aviator and the Ace tennis shield, both with Eclipse™ instant-tint lenses. $20 to reserve." />
+  <meta name="description" content="Reserve The Coach Collection by Chamelo and Patrick Mouratoglou — the Vantage Pro acetate aviator and the Ace tennis shield, both with Eclipse™ instant-tint lenses. $20 to reserve." />
 
   <!-- Scroll-reveal (self-contained, scroll-driven, repeatable).
        Each element stays hidden until you scroll down to it, then fades/rises in;
@@ -135,15 +135,22 @@
     <section class="hero s-dark" id="hero">
       <!-- Full-bleed looping background video of Patrick Mouratoglou.
            TODO: CONFIRM HERO VIDEO ASSET — this loop was assembled from the
-           supplied Patrick/Vantage lifestyle stills (slow motion + crossfades)
+           supplied Patrick/Vantage Pro lifestyle stills (slow motion + crossfades)
            as a stand-in. Swap in a real brand hero video when available; keep
            it muted/loop/playsinline with the poster as the fallback frame. -->
       <div class="hero-video">
+        <!-- TEMPORARY: static image placeholder in place of the looping hero
+             video, so the gradient scrim can be reviewed. Restore the <video>
+             block below (and the pause/play button) when the real video is ready. -->
+        <img id="heroImg" class="hero-media-img" src="images/lifestyle/patrick-hero-poster.jpg"
+             alt="Patrick Mouratoglou coaching on court in Chamelo Vantage Pro aviators" />
+        <!--
         <video id="heroVideo" autoplay muted loop playsinline preload="auto"
                poster="images/lifestyle/patrick-hero-poster.jpg"
-               aria-label="Patrick Mouratoglou coaching on court in Chamelo Vantage aviators">
+               aria-label="Patrick Mouratoglou coaching on court in Chamelo Vantage Pro aviators">
           <source src="videos/patrick-hero.mp4" type="video/mp4" />
         </video>
+        -->
         <div class="hero-scrim"></div>
       </div>
 
@@ -152,14 +159,14 @@
           <p class="eyebrow">The Coach Collection</p>
           <h1 class="display">One collection.<br /><span class="hl">Every light.</span></h1>
           <p class="lead">
-            Two frames created with Patrick Mouratoglou — the <strong>Vantage</strong> acetate
+            Two frames created with Patrick Mouratoglou — the <strong>Vantage Pro</strong> acetate
             aviator and the <strong>Ace</strong> tennis shield. Both run Eclipse™ instant-tint
             lenses that shift from light to dark in 0.1 seconds, so one frame covers full sun to indoors.
           </p>
-          <p class="hero-spec">
-            Vantage: acetate aviator · Smoke Eclipse™ lenses · open-ear audio<br />
-            Ace: tennis shield · high-contrast amber lens · blue Revo mirror
-          </p>
+          <div class="hero-spec">
+            <p><strong>Vantage Pro</strong> — acetate aviator · Smoke Eclipse™ lenses · open-ear audio</p>
+            <p><strong>Ace</strong> — tennis shield · high-contrast amber lens · blue Revo mirror</p>
+          </div>
           <div class="hero-cta">
             <a class="btn btn-blue" href="#picker">Choose your frame</a>
             <a class="btn btn-ghost" href="#eclipse">See it change</a>
@@ -168,10 +175,12 @@
         </div>
       </div>
 
+      <!-- Pause/play control hidden while the hero uses a static image placeholder.
       <button id="heroToggle" class="hero-toggle" type="button" aria-label="Pause background video" aria-pressed="true">
         <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
         <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
       </button>
+      -->
     </section>
 
     <!-- ================= Stat strip (shared, all sourced) ================= -->
@@ -179,7 +188,7 @@
       <div class="grid">
         <div class="stat"><div class="n"><b>0.1</b> SEC</div><div class="l">Instant tint adjustment</div></div>
         <div class="stat"><div class="n">100% UV</div><div class="l">UVA/UVB protection at every tint level</div></div>
-        <div class="stat"><div class="n">2 FRAMES</div><div class="l">Aviator + tennis shield</div></div>
+        <div class="stat"><div class="n"><b>2</b> FRAMES</div><div class="l">Aviator + tennis shield</div></div>
         <div class="stat"><div class="n">COURT-TESTED</div><div class="l">Created with Patrick Mouratoglou</div></div>
       </div>
     </section>
@@ -195,19 +204,19 @@
         </div>
 
         <div class="picker">
-          <!-- Vantage card -->
+          <!-- Vantage Pro card -->
           <article class="pcard vantage">
             <div class="shot">
               <img src="images/product/vantage-front.png" loading="lazy"
-                   alt="Chamelo Vantage aviator in glossy black acetate with smoke gradient Eclipse lenses and temple controls, three-quarter view" />
+                   alt="Chamelo Vantage Pro aviator in glossy black acetate with smoke gradient Eclipse lenses and temple controls, three-quarter view" />
             </div>
             <div class="body">
-              <span class="kicker">Vantage · Acetate aviator</span>
-              <h3>Vantage</h3>
+              <span class="kicker">Vantage Pro · Acetate aviator</span>
+              <h3>Vantage Pro</h3>
               <p>A handcrafted black acetate aviator with instant tint control and open-ear audio —
                 one refined frame from full sun to indoors.</p>
               <div class="spec">Black acetate frame · Smoke Eclipse™ lenses · Open-ear audio</div>
-              <button class="btn btn-blue btn-block" type="button" data-reserve="vantage">Reserve Vantage for $20</button>
+              <button class="btn btn-blue btn-block" type="button" data-reserve="vantage">Reserve Vantage Pro for $20</button>
             </div>
           </article>
 
@@ -229,13 +238,15 @@
         </div>
 
         <!-- "Which one is right for me" comparison -->
-        <div class="compare" role="table" aria-label="Compare Vantage and Ace">
-          <div class="row-h" role="row"><span role="columnheader"></span><span role="columnheader">Vantage</span><span role="columnheader">Ace</span></div>
-          <div role="row"><span class="k" role="rowheader">Frame</span><span class="v" role="cell">Acetate aviator</span><span class="v" role="cell">Tennis shield</span></div>
-          <div role="row"><span class="k" role="rowheader">Lens</span><span class="v" role="cell">Smoke Eclipse™</span><span class="v" role="cell">High-contrast amber, blue Revo</span></div>
-          <div role="row"><span class="k" role="rowheader">Open-ear audio</span><span class="v" role="cell">Yes — calls, music, voice</span><span class="v" role="cell">No</span></div>
-          <div role="row"><span class="k" role="rowheader">Best for</span><span class="v" role="cell">Court to car to dinner</span><span class="v" role="cell">Match play, fast tracking</span></div>
-          <div role="row"><span class="k" role="rowheader">Reserve</span><span class="v" role="cell">$20</span><span class="v" role="cell">$20</span></div>
+        <div class="compare" role="table" aria-label="Compare Vantage Pro and Ace">
+          <div class="row-h" role="row"><span role="columnheader"></span><span role="columnheader">Vantage Pro</span><span role="columnheader">Ace</span></div>
+          <div role="row"><span class="k" role="rowheader">Instant Tint</span><span class="v" role="cell">YES — 0.1 sec tint shift</span><span class="v" role="cell">YES — 0.1 sec tint shift</span></div>
+          <div role="row"><span class="k" role="rowheader">Frame</span><span class="v" role="cell">Classic Acetate Aviator</span><span class="v" role="cell">Performance Tennis Shield</span></div>
+          <div role="row"><span class="k" role="rowheader">Lens Tech</span><span class="v" role="cell">Smoke Eclipse™</span><span class="v" role="cell">High-Contrast Amber / Blue Revo Optics</span></div>
+          <div role="row"><span class="k" role="rowheader">Integrated Audio</span><span class="v" role="cell">YES — calls, music, &amp; voice assistants</span><span class="v" role="cell">Streamlined lightweight design focused purely on optics</span></div>
+          <div role="row"><span class="k" role="rowheader">Primary Focus</span><span class="v" role="cell">Lifestyle versatility &amp; smart audio</span><span class="v" role="cell">On-court optics &amp; court ball tracking</span></div>
+          <div role="row"><span class="k" role="rowheader">Best for</span><span class="v" role="cell">Court to car to dinner</span><span class="v" role="cell">Match play, fast tracking, &amp; intense drills</span></div>
+          <div role="row"><span class="k" role="rowheader">Reserve Today</span><span class="v" role="cell">$20</span><span class="v" role="cell">$20</span></div>
         </div>
       </div>
     </section>
@@ -280,19 +291,12 @@
             <div class="tint"></div>
             <div class="glare"></div>
             <span class="badge">0.1 sec adjustment</span>
-            <div class="readout">
-              <div class="lvl" id="lensLvl">Level 1 of 4</div>
-              <div class="vlt" id="lensVlt">54% VLT</div>
-            </div>
           </div>
 
           <div class="slider-wrap">
-            <div class="slider-label">Slide to control the light</div>
-            <input type="range" id="tintSlider" min="0" max="3" step="1" value="0"
-                   aria-label="Eclipse tint level" aria-valuetext="Level 1 of 4, 54% VLT" />
-            <div class="ticks" id="tintTicks">
-              <span class="on">54% VLT</span><span>Level 2</span><span>Level 3</span><span>17% VLT</span>
-            </div>
+            <div class="slider-label">Slide to change the tint</div>
+            <input type="range" id="tintSlider" min="0" max="1" step="0.001" value="0"
+                   aria-label="Eclipse lens tint" />
           </div>
         </div>
 
@@ -369,12 +373,12 @@
           <div class="col-media">
             <div class="media">
               <img src="images/lifestyle/patrick-vantage-temple.jpg" loading="lazy"
-                   alt="Patrick Mouratoglou courtside touching the temple of his Chamelo Vantage aviators to control the lens, tennis balls in hand" />
+                   alt="Patrick Mouratoglou courtside touching the temple of his Chamelo Vantage Pro aviators to control the lens, tennis balls in hand" />
             </div>
-            <p class="figcap">Patrick courtside, taking a call through Vantage’s open-ear speakers while following the match</p>
+            <p class="figcap">Patrick courtside, taking a call through Vantage Pro’s open-ear speakers while following the match</p>
           </div>
           <div class="col-copy">
-            <p class="eyebrow" style="color:var(--blue-hover)">Vantage · Hear what matters</p>
+            <p class="eyebrow" style="color:var(--blue-hover)">Vantage Pro · Hear what matters</p>
             <h2 class="h2">Hear what matters. Stay in the moment.</h2>
             <p class="lead" style="margin-top:20px">Open-ear speakers let you take a call, listen to music, or use
               voice control without blocking the world around you.</p>
@@ -390,9 +394,9 @@
     <section class="section s-white">
       <div class="wrap">
         <div class="sec-head" style="max-width:52ch">
-          <p class="eyebrow" style="color:var(--blue-hover)">Vantage · Real eyewear first</p>
+          <p class="eyebrow" style="color:var(--blue-hover)">Vantage Pro · Real eyewear first</p>
           <h2 class="h2">Technology that doesn’t look like technology.</h2>
-          <p class="lead" style="margin-top:18px">Vantage is built as a premium aviator first: handcrafted black
+          <p class="lead" style="margin-top:18px">Vantage Pro is built as a premium aviator first: handcrafted black
             acetate, restrained detailing, a timeless silhouette, and smoke lenses that keep the technology
             discreet. Light enough for movement. Refined enough for everywhere after.</p>
         </div>
@@ -400,11 +404,11 @@
         <div class="row" style="margin-bottom:clamp(28px,4vw,48px)">
           <div class="col-media">
             <div class="media shot"><img src="images/product/vantage-angle.png" loading="lazy"
-              alt="Chamelo Vantage aviator, front three-quarter studio view in glossy black acetate with smoke lenses" /></div>
+              alt="Chamelo Vantage Pro aviator, front three-quarter studio view in glossy black acetate with smoke lenses" /></div>
           </div>
           <div class="col-media">
             <div class="media shot"><img src="images/product/vantage-arm.png" loading="lazy"
-              alt="Chamelo Vantage aviator, side view showing the temple arm with touch controls and rubberized ear tip" /></div>
+              alt="Chamelo Vantage Pro aviator, side view showing the temple arm with touch controls and rubberized ear tip" /></div>
           </div>
         </div>
 
@@ -471,7 +475,7 @@
           <div class="rescard" id="rescard">
             <div class="selector" role="group" aria-label="Choose the frame to reserve">
               <button type="button" data-select="vantage" aria-pressed="true">
-                <span class="t">Vantage</span><br /><span class="s">Aviator · Audio</span>
+                <span class="t">Vantage Pro</span><br /><span class="s">Aviator · Audio</span>
               </button>
               <button type="button" data-select="ace" aria-pressed="false">
                 <span class="t">Ace</span><br /><span class="s">Tennis shield</span>
@@ -480,7 +484,7 @@
 
             <div class="priceline">
               <span class="k">Reserving</span>
-              <span class="v"><span id="resName">Vantage</span></span>
+              <span class="v"><span id="resName">Vantage Pro</span></span>
             </div>
             <div class="priceline">
               <span class="k">Expected MSRP</span>
@@ -501,13 +505,13 @@
                  snippet supplied. Paste the reservation <form> markup, action
                  URL, and hidden field names from a prior completed Checkout
                  Champ page here, changing ONLY the product-name/price fields
-                 (Vantage / Ace, $20). Until then the button below is an inert
+                 (Vantage Pro / Ace, $20). Until then the button below is an inert
                  placeholder that only scrolls/selects — it does NOT submit an
                  order. Do not invent an action URL or field names.
                  =============================================================== -->
             <div class="formslot">
-              <input type="hidden" id="resProductField" value="Vantage" />
-              <button class="btn btn-blue btn-block" id="resCta" type="button" data-reserve="vantage">Reserve my Vantage for $20</button>
+              <input type="hidden" id="resProductField" value="Vantage Pro" />
+              <button class="btn btn-blue btn-block" id="resCta" type="button" data-reserve="vantage">Reserve my Vantage Pro for $20</button>
             </div>
 
             <p class="fineprint">
@@ -587,10 +591,10 @@
             <div class="a">Matte black frame with a high-contrast amber lens and a blue Revo mirror finish (Black / Blue).</div>
           </details>
 
-          <p class="cat">Vantage (acetate aviator)</p>
+          <p class="cat">Vantage Pro (acetate aviator)</p>
           <details>
-            <summary>Which Vantage version am I reserving?</summary>
-            <div class="a">Vantage in Black — handcrafted acetate frame, Smoke Eclipse™ lenses, and open-ear audio.</div>
+            <summary>Which Vantage Pro version am I reserving?</summary>
+            <div class="a">Vantage Pro in Black — handcrafted acetate frame, Smoke Eclipse™ lenses, and open-ear audio.</div>
           </details>
           <details>
             <summary>How does the tint change?</summary>
@@ -634,18 +638,18 @@
   </main>
 
   <footer class="site-footer">
-    <p class="m">Chamelo — The Mouratoglou Collection · Vantage + Ace</p>
+    <p class="m">Chamelo — The Mouratoglou Collection · Vantage Pro + Ace</p>
   </footer>
 
   <!-- ================= Sticky reserve bar (persistent CTA) ================= -->
   <div class="stickybar" id="stickybar" aria-label="Reserve">
     <div class="in">
       <div class="who">
-        <span class="name" id="stkName">Vantage</span>
+        <span class="name" id="stkName">Vantage Pro</span>
         <span class="meta" id="stkMeta">Black / Smoke / Audio</span>
       </div>
       <div class="switch" role="group" aria-label="Switch frame">
-        <button type="button" data-stk="vantage" aria-pressed="true">Vantage</button>
+        <button type="button" data-stk="vantage" aria-pressed="true">Vantage Pro</button>
         <button type="button" data-stk="ace" aria-pressed="false">Ace</button>
       </div>
       <a class="btn btn-blue" href="#reserve" data-reserve-jump>$20 · Reserve</a>

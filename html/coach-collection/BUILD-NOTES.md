@@ -24,13 +24,13 @@ inline `<!-- TODO: CONFIRM … -->` (see list at the bottom).
 8. Final CTA + persistent sticky reserve bar with product switch.
 
 ## Motion
-- **Hero**: full-bleed looping background video of Patrick Mouratoglou with a
-  dark left→right gradient scrim for text legibility and a bottom-right
-  pause/play control. The MP4 (`videos/patrick-hero.mp4`, ~0.9 MB, muted/loop/
-  playsinline, poster fallback) was assembled from the supplied Patrick/Vantage
-  stills (slow zoom + crossfades) as a stand-in — see the TODO to swap a real
-  brand video. Reduced-motion visitors get the poster, not autoplay.
-- Interactive Eclipse tint slider (still the "product changing" demo).
+- **Hero**: full-bleed background with a dark left→right gradient scrim for text
+  legibility. Currently showing a **static image placeholder** (per revision
+  request) — the looping video (`videos/patrick-hero.mp4`) and its bottom-right
+  pause/play control are commented out in the markup, ready to restore. The MP4
+  was assembled from the supplied Patrick/Vantage Pro stills as a stand-in — see
+  the TODO to swap a real brand video.
+- Interactive Eclipse tint slider — continuous/smooth drag, light↔dark.
 - **Scroll-reveal**: scroll-driven and repeatable — each element stays hidden
   until you scroll down to it, then fades/rises in, and resets once it drops back
   below the viewport so scrolling down re-plays it. Self-contained inline script,
