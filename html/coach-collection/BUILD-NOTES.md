@@ -25,13 +25,14 @@ inline `<!-- TODO: CONFIRM … -->` (see list at the bottom).
 
 ## Motion
 - Hero lens auto-cycles light↔dark; interactive Eclipse tint slider.
-- **Scroll-reveal**: sections/cards fade-and-rise as they enter the viewport
-  (self-contained inline script, position-based on scroll/wheel/touch so it
-  works in preview iframes/embeds where IntersectionObserver may not fire),
-  staggered per group. Fail-safe: content is force-revealed if anything in view
-  stays hidden after load or first interaction, so it can never be left blank.
-  Disabled — content shown immediately — for `prefers-reduced-motion`, no-JS,
-  and print.
+- **Scroll-reveal**: scroll-driven and repeatable — each element stays hidden
+  until you scroll down to it, then fades/rises in, and resets once it drops back
+  below the viewport so scrolling down re-plays it. Self-contained inline script,
+  position-based on scroll/wheel/touch (tracks real scroll even in preview
+  iframes/embeds where IntersectionObserver may not fire), staggered per group.
+  Fail-safe: if scroll can't be tracked in the environment, everything is
+  force-revealed rather than left blank. Disabled — content shown immediately —
+  for `prefers-reduced-motion`, no-JS, and print.
 
 ## Base-template bug fixed (Rule #4)
 The Ace 4-feature grid uses four **distinct** captions (Sweat sheds / Fog stays out /

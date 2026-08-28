@@ -6,13 +6,14 @@
   <title>The Coach Collection — Chamelo × Patrick Mouratoglou</title>
   <meta name="description" content="Reserve The Coach Collection by Chamelo and Patrick Mouratoglou — the Vantage acetate aviator and the Ace tennis shield, both with Eclipse™ instant-tint lenses. $20 to reserve." />
 
-  <!-- Scroll-reveal (self-contained + fail-safe).
-       Content is hidden ONLY if this script runs AND motion is allowed. Reveal is
-       driven by element position on scroll/wheel/touch/resize (works in embeds and
-       previews where IntersectionObserver may not fire). Multiple guarantees make
-       sure content is NEVER left blank: it reveals above-fold immediately, and if
-       anything in view is still hidden after load or the first interaction, it
-       force-reveals everything. No-JS, reduced-motion and print keep content visible. -->
+  <!-- Scroll-reveal (self-contained, scroll-driven, repeatable).
+       Each element stays hidden until you scroll down to it, then fades/rises in;
+       once it drops back below the viewport it resets, so scrolling down re-plays
+       the animation. Position-based (scroll/wheel/touch/resize) so it tracks the
+       real scroll even in preview iframes/embeds where IntersectionObserver may
+       not fire. Fail-safe: if the scroll can't be tracked in this environment,
+       everything is force-revealed instead of left blank. No-JS, reduced-motion
+       and print keep all content visible. -->
   <script>
   (function () {
     try {
@@ -25,31 +26,32 @@
       docEl.classList.add("reveal-on");
       var q = function () { return document.querySelectorAll(SEL); };
       var revealAll = function () { var e = q(); for (var i = 0; i < e.length; i++) e[i].classList.add("is-visible"); };
-      var allDone = false, raf = false;
+      var raf = false, broken = false;
 
-      var sweep = function () {
-        raf = false; if (allDone) return;
-        var e = q(), vh = window.innerHeight || docEl.clientHeight || 0, remaining = 0;
+      // Reveal when an element scrolls into the lower part of the viewport;
+      // reset once it's fully below the viewport again so it re-animates.
+      var update = function () {
+        raf = false; if (broken) return;
+        var e = q(), vh = window.innerHeight || docEl.clientHeight || 0;
         for (var i = 0; i < e.length; i++) {
-          var el = e[i];
-          if (el.classList.contains("is-visible")) continue;
-          var r = el.getBoundingClientRect();
-          if (r.top < vh * 0.9 && r.bottom > -1) el.classList.add("is-visible"); else remaining++;
+          var el = e[i], r = el.getBoundingClientRect();
+          if (r.top < vh * 0.86 && r.bottom > 0) el.classList.add("is-visible");
+          else if (r.top >= vh) el.classList.remove("is-visible"); // below fold -> reset
         }
-        if (remaining === 0) allDone = true;
       };
       var onScroll = function () {
         if (raf) return; raf = true;
-        (window.requestAnimationFrame || function (f) { setTimeout(f, 16); })(sweep);
+        (window.requestAnimationFrame || function (f) { setTimeout(f, 16); })(update);
       };
-      // If anything currently in the viewport is still hidden, the reveal isn't
-      // working in this environment — show everything rather than risk blanks.
+      // If scrolling can't be tracked here (embed/preview quirks), an element in
+      // view will stay hidden — detect that and just show everything (no blanks).
       var guard = function () {
-        if (allDone) return;
         var e = q(), vh = window.innerHeight || docEl.clientHeight || 0;
         for (var i = 0; i < e.length; i++) {
           var r = e[i].getBoundingClientRect();
-          if (r.top < vh && r.bottom > 0 && !e[i].classList.contains("is-visible")) { revealAll(); return; }
+          if (r.top < vh * 0.86 && r.bottom > 0 && !e[i].classList.contains("is-visible")) {
+            broken = true; revealAll(); return;
+          }
         }
       };
 
@@ -66,9 +68,12 @@
           window.addEventListener("touchmove", onScroll, { passive: true });
           window.addEventListener("resize", onScroll);
           window.addEventListener("keydown", onScroll);
-          sweep();                                             // reveal above-fold now
-          // verify shortly after the first interaction
-          var once = function () { setTimeout(guard, 400); window.removeEventListener("wheel", once); window.removeEventListener("touchstart", once); window.removeEventListener("scroll", once, true); };
+          update();                                            // set initial in/out state
+          // after the first real interaction, confirm reveal is actually working
+          var once = function () {
+            window.removeEventListener("wheel", once); window.removeEventListener("touchstart", once); window.removeEventListener("scroll", once, true);
+            setTimeout(guard, 450);
+          };
           window.addEventListener("wheel", once, { passive: true });
           window.addEventListener("touchstart", once, { passive: true });
           window.addEventListener("scroll", once, true);
@@ -77,7 +82,6 @@
 
       if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
       else start();
-      window.addEventListener("load", function () { setTimeout(guard, 1200); });
     } catch (e) {
       try { document.documentElement.classList.remove("reveal-on"); } catch (_) {}
     }
