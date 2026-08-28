@@ -122,43 +122,14 @@
     io.observe(hero);
   }
 
-  /* ---------------- Scroll reveal ---------------- */
-  var REVEAL_SEL = ".stats .stat, .sec-head, .pcard, .compare, .split > div, " +
-    ".eclipse-demo, .tech-grid .t, .row, .fgrid .fcard, .matlist, .bio .portrait, " +
-    ".bio > div:last-child, .reserve > div, .logi .li, .faq .cat, .faq details, " +
-    ".finalcta .h2, .finalcta .lead, .finalcta .btn, .finalcta .sub, [data-reveal]";
-
-  function initReveal() {
-    // Only run when the early inline script enabled reveals (JS on + motion allowed).
-    if (!document.documentElement.classList.contains("reveal-on")) return;
-    var els = $all(REVEAL_SEL);
-    if (!els.length) return;
-
-    if (!("IntersectionObserver" in window)) {
-      els.forEach(function (el) { el.classList.add("is-visible"); });
-      return;
-    }
-    // stagger siblings that share a parent
-    var seen = new Map();
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add("is-visible"); io.unobserve(en.target); }
-      });
-    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
-
-    els.forEach(function (el) {
-      var p = el.parentElement;
-      var i = seen.get(p) || 0; seen.set(p, i + 1);
-      el.style.transitionDelay = Math.min(i, 6) * 55 + "ms";
-      io.observe(el);
-    });
-  }
+  // NOTE: scroll-reveal is handled by the self-contained inline script in
+  // <head> (see coach-collection.html) so that hiding and revealing share the
+  // same fate — if that script can't run, nothing is ever hidden.
 
   document.addEventListener("DOMContentLoaded", function () {
     initSlider();
     initSelector();
     initSticky();
-    initReveal();
     setProduct("vantage");
   });
 })();

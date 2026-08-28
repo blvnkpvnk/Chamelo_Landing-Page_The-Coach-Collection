@@ -6,13 +6,82 @@
   <title>The Coach Collection — Chamelo × Patrick Mouratoglou</title>
   <meta name="description" content="Reserve The Coach Collection by Chamelo and Patrick Mouratoglou — the Vantage acetate aviator and the Ace tennis shield, both with Eclipse™ instant-tint lenses. $20 to reserve." />
 
-  <!-- Enable scroll-reveal hidden states only when JS is on AND motion is allowed.
-       If this doesn't run (no JS) or the visitor prefers reduced motion, nothing is
-       ever hidden — so content is always readable. Runs early to avoid any flash. -->
+  <!-- Scroll-reveal (self-contained + fail-safe).
+       Content is hidden ONLY if this script runs AND motion is allowed. Reveal is
+       driven by element position on scroll/wheel/touch/resize (works in embeds and
+       previews where IntersectionObserver may not fire). Multiple guarantees make
+       sure content is NEVER left blank: it reveals above-fold immediately, and if
+       anything in view is still hidden after load or the first interaction, it
+       force-reveals everything. No-JS, reduced-motion and print keep content visible. -->
   <script>
-    try { if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      document.documentElement.classList.add("reveal-on");
-    } } catch (e) {}
+  (function () {
+    try {
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      var SEL = ".stats .stat, .sec-head, .pcard, .compare, .split > div, .eclipse-demo, " +
+        ".tech-grid .t, .row, .fgrid .fcard, .matlist, .bio .portrait, .bio > div:last-child, " +
+        ".reserve > div, .logi .li, .faq .cat, .faq details, .finalcta .h2, .finalcta .lead, " +
+        ".finalcta .btn, .finalcta .sub, [data-reveal]";
+      var docEl = document.documentElement;
+      docEl.classList.add("reveal-on");
+      var q = function () { return document.querySelectorAll(SEL); };
+      var revealAll = function () { var e = q(); for (var i = 0; i < e.length; i++) e[i].classList.add("is-visible"); };
+      var allDone = false, raf = false;
+
+      var sweep = function () {
+        raf = false; if (allDone) return;
+        var e = q(), vh = window.innerHeight || docEl.clientHeight || 0, remaining = 0;
+        for (var i = 0; i < e.length; i++) {
+          var el = e[i];
+          if (el.classList.contains("is-visible")) continue;
+          var r = el.getBoundingClientRect();
+          if (r.top < vh * 0.9 && r.bottom > -1) el.classList.add("is-visible"); else remaining++;
+        }
+        if (remaining === 0) allDone = true;
+      };
+      var onScroll = function () {
+        if (raf) return; raf = true;
+        (window.requestAnimationFrame || function (f) { setTimeout(f, 16); })(sweep);
+      };
+      // If anything currently in the viewport is still hidden, the reveal isn't
+      // working in this environment — show everything rather than risk blanks.
+      var guard = function () {
+        if (allDone) return;
+        var e = q(), vh = window.innerHeight || docEl.clientHeight || 0;
+        for (var i = 0; i < e.length; i++) {
+          var r = e[i].getBoundingClientRect();
+          if (r.top < vh && r.bottom > 0 && !e[i].classList.contains("is-visible")) { revealAll(); return; }
+        }
+      };
+
+      var start = function () {
+        try {
+          var e = q();
+          for (var i = 0; i < e.length; i++) {                 // per-group stagger
+            var p = e[i].parentNode; if (typeof p.__ri !== "number") p.__ri = 0;
+            e[i].style.transitionDelay = (Math.min(p.__ri++, 6) * 55) + "ms";
+          }
+          window.addEventListener("scroll", onScroll, { passive: true });
+          window.addEventListener("scroll", onScroll, true);   // catch scrollable ancestors
+          window.addEventListener("wheel", onScroll, { passive: true });
+          window.addEventListener("touchmove", onScroll, { passive: true });
+          window.addEventListener("resize", onScroll);
+          window.addEventListener("keydown", onScroll);
+          sweep();                                             // reveal above-fold now
+          // verify shortly after the first interaction
+          var once = function () { setTimeout(guard, 400); window.removeEventListener("wheel", once); window.removeEventListener("touchstart", once); window.removeEventListener("scroll", once, true); };
+          window.addEventListener("wheel", once, { passive: true });
+          window.addEventListener("touchstart", once, { passive: true });
+          window.addEventListener("scroll", once, true);
+        } catch (err) { revealAll(); }
+      };
+
+      if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
+      else start();
+      window.addEventListener("load", function () { setTimeout(guard, 1200); });
+    } catch (e) {
+      try { document.documentElement.classList.remove("reveal-on"); } catch (_) {}
+    }
+  })();
   </script>
 
   <!-- Self-hosted fonts: preload the two most-used display weights -->
