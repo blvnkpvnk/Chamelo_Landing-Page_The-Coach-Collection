@@ -23,6 +23,12 @@ inline `<!-- TODO: CONFIRM … -->` (see list at the bottom).
 7. FAQ — merged & de-duplicated, product-specific groups.
 8. Final CTA + persistent sticky reserve bar with product switch.
 
+## Motion
+- Hero lens auto-cycles light↔dark; interactive Eclipse tint slider.
+- **Scroll-reveal**: sections/cards fade-and-rise as they enter the viewport
+  (IntersectionObserver, staggered per group). Disabled — content shown
+  immediately — for `prefers-reduced-motion`, no-JS, and print.
+
 ## Base-template bug fixed (Rule #4)
 The Ace 4-feature grid uses four **distinct** captions (Sweat sheds / Fog stays out /
 Nothing slips / No waiting), each with its own body copy — not a repeated generic line.
