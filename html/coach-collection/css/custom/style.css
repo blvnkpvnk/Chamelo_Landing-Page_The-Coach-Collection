@@ -256,8 +256,19 @@ h1{font-weight:900}
   background:var(--bg-card); border:1px solid var(--line-dark); border-radius:var(--radius);
   overflow:hidden; display:flex; flex-direction:column;
 }
-.pcard .shot{background:#e9e7e2; aspect-ratio:16/10; display:grid; place-items:center; padding:18px}
-.pcard .shot img{width:82%; height:auto; object-fit:contain; filter:drop-shadow(0 18px 30px rgba(0,0,0,.35))}
+.pcard .shot{position:relative; background:#e9e7e2; aspect-ratio:16/10; overflow:hidden}
+/* image carousel */
+.pcard .carousel{position:relative; width:100%; height:100%}
+.pcard .slides{display:flex; width:100%; height:100%; overflow-x:auto; scroll-snap-type:x mandatory;
+  scrollbar-width:none; -ms-overflow-style:none; scroll-behavior:smooth}
+.pcard .slides::-webkit-scrollbar{display:none}
+.pcard .slides img{flex:0 0 100%; width:100%; height:100%; object-fit:contain; padding:22px 18px 30px;
+  scroll-snap-align:center; filter:drop-shadow(0 16px 26px rgba(0,0,0,.28))}
+.pcard .dots{position:absolute; left:0; right:0; bottom:12px; z-index:2;
+  display:flex; gap:7px; justify-content:center}
+.pcard .dots button{width:7px; height:7px; padding:0; border:0; border-radius:50%;
+  background:rgba(20,20,26,.28); cursor:pointer; transition:width .2s ease, background .2s ease}
+.pcard .dots button[aria-selected="true"]{width:20px; border-radius:4px; background:var(--gold-2)}
 .pcard .body{padding:clamp(20px,2.4vw,30px); display:flex; flex-direction:column; gap:14px; flex:1}
 .pcard .kicker{font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase; color:var(--gold)}
 .pcard.ace .kicker{color:var(--blue-bright)}
@@ -275,8 +286,10 @@ h1{font-weight:900}
 .compare div{display:grid; grid-template-columns:1.1fr 1fr 1fr; gap:0}
 .compare span{padding:15px 20px; border-top:1px solid var(--line-dark); font-size:.94rem; line-height:1.4}
 .compare span + span{border-left:1px solid var(--line-dark)}      /* vertical grid lines */
-.compare .row-h span{border-top:0; font-weight:800; letter-spacing:.03em;
-  text-transform:uppercase; font-size:.82rem; color:var(--ink-on-dark)}
+.compare .row-h span{border-top:0; padding-block:26px; font-weight:800; letter-spacing:.03em;
+  text-transform:uppercase; font-size:.82rem;
+  background:var(--grad-gold); -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:var(--gold-2)}
 .compare .k{color:var(--ink-on-dark); font-weight:700}
 .compare .v{color:var(--muted-on-dark)}
 @media (max-width:760px){ .picker{grid-template-columns:1fr} .compare{font-size:.85rem} }
@@ -435,6 +448,8 @@ h1{font-weight:900}
 .finalcta .sub{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted-on-dark); margin-top:22px}
 .site-footer{padding:34px var(--pad); text-align:center; border-top:1px solid var(--line-dark)}
 .site-footer .m{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--muted-on-dark)}
+.site-footer .brand{justify-content:center}
+.site-footer .brand .tag{display:inline-block}   /* keep the name visible on mobile in the footer */
 
 /* ---------- Sticky footer reserve bar ---------------------------------- */
 .stickybar{
@@ -461,7 +476,7 @@ h1{font-weight:900}
   .stickybar .meta{display:none}
   .stickybar .in{padding-block:10px}
 }
-body{padding-bottom:0}
+body{padding-bottom:72px}   /* clear the fixed sticky reserve bar so the footer stays visible */
 
 /* ---------- Accessibility / motion ------------------------------------- */
 .skip{position:absolute; left:-999px; top:0; background:#fff; color:#000; padding:10px 16px; z-index:100}

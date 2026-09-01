@@ -107,6 +107,49 @@
     io.observe(hero);
   }
 
+  /* ---------------- Product image carousels ---------------- */
+  function initCarousels() {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    $all("[data-carousel]").forEach(function (c) {
+      var slides = $(".slides", c);
+      var imgs = $all("img", slides);
+      var dotsWrap = $(".dots", c);
+      if (!slides || !dotsWrap || imgs.length < 2) { if (dotsWrap) dotsWrap.style.display = "none"; return; }
+
+      var dots = imgs.map(function (_, i) {
+        var b = document.createElement("button");
+        b.type = "button"; b.setAttribute("role", "tab");
+        b.setAttribute("aria-label", "Show image " + (i + 1) + " of " + imgs.length);
+        b.addEventListener("click", function () {
+          idx = i; slides.scrollTo({ left: slides.clientWidth * i, behavior: "smooth" });
+        });
+        dotsWrap.appendChild(b); return b;
+      });
+      var idx = 0;
+      function setActive(i) { dots.forEach(function (d, k) { d.setAttribute("aria-selected", String(k === i)); }); }
+      setActive(0);
+
+      var raf = false;
+      slides.addEventListener("scroll", function () {
+        if (raf) return; raf = true;
+        (window.requestAnimationFrame || function (f) { setTimeout(f, 16); })(function () {
+          raf = false; idx = Math.round(slides.scrollLeft / slides.clientWidth); setActive(idx);
+        });
+      }, { passive: true });
+
+      if (!reduce) {
+        var timer = setInterval(function () {
+          idx = (idx + 1) % imgs.length;
+          slides.scrollTo({ left: slides.clientWidth * idx, behavior: "smooth" });
+        }, 4500);
+        var stop = function () { clearInterval(timer); };
+        c.addEventListener("mouseenter", stop);
+        c.addEventListener("touchstart", stop, { passive: true });
+        c.addEventListener("focusin", stop);
+      }
+    });
+  }
+
   /* ---------------- Hero background video pause/play ---------------- */
   function initHeroVideo() {
     var v = $("#heroVideo"), btn = $("#heroToggle");
@@ -138,6 +181,7 @@
     initSelector();
     initSticky();
     initHeroVideo();
+    initCarousels();
     setProduct("vantage");
   });
 })();
