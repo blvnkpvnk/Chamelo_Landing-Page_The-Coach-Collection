@@ -34,8 +34,9 @@
   function $all(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
 
   /* ---------------- Eclipse tint slider ---------------- */
-  // Continuous slider: value 0..1 maps smoothly to lens darkness (light -> dark).
-  var TINT_LIGHT = 0.30, TINT_DARK = 0.82;
+  // Continuous slider: value 0..1 crossfades the tint-change overlay image in
+  // (0 = clear scene, 1 = full tinted overlay).
+  var TINT_LIGHT = 0, TINT_DARK = 1;
 
   function initSlider() {
     var slider = $("#tintSlider");
