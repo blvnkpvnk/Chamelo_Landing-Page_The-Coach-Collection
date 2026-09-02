@@ -59,7 +59,7 @@
   --line-light:rgba(0,0,0,.10);
 
   --maxw:1180px;
-  --pad:clamp(20px,5vw,64px);
+  --pad:clamp(24px,6vw,64px);
   --radius:18px;
 
   --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,"Liberation Mono",monospace;
@@ -196,13 +196,20 @@ h1{font-weight:900}
   /* Stack the hero: Patrick's image up top, copy in the dark area below it,
      so the text no longer sits over the image. */
   .hero{display:block; min-height:auto}
-  .hero-video{position:relative; height:clamp(220px,42vh,400px)}
+  .hero-video{position:relative; height:clamp(220px,42vh,400px); overflow:hidden}
+  /* Center Patrick horizontally and zoom in so his head fills more of the
+     top of the band instead of being cropped at the frame edge (V7). */
   .hero-video video,
-  .hero-video .hero-media-img{object-position:center 28%}
+  .hero-video .hero-media-img{
+    object-position:50% 18%;
+    transform:scale(1.25);
+    transform-origin:50% 18%;
+  }
   /* Keep the image visible; fade only its lower edge into the copy area below. */
   .hero-scrim{background:
     linear-gradient(180deg, rgba(7,8,10,.05) 0%, rgba(7,8,10,.10) 52%, rgba(7,8,10,.72) 86%, rgba(7,8,10,1) 100%);}
-  .hero-inner{padding-block:clamp(28px,6vw,56px)}
+  /* Pull the copy up closer to the image (V7) — top gap trimmed more than bottom */
+  .hero-inner{padding-top:clamp(12px,3vw,24px); padding-bottom:clamp(28px,6vw,56px)}
   .hero-cta .btn{flex:1 1 auto; text-align:center}
 }
 /* ---- Mobile-only refinements (V5/V6) --------------------------------- */
