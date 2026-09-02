@@ -304,11 +304,15 @@ h1{font-weight:900}
 .sunshade{
   position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/10;
   border:1px solid var(--line-dark); display:grid; grid-template-columns:1fr 1fr;
-  background-size:cover; background-position:center; background-repeat:no-repeat;
 }
-.sunshade .end{position:relative; display:flex; align-items:flex-start; padding:16px; background:transparent}
-/* Sun/shade lighting and the sunglasses-frame tint overlay are baked into the
-   composite image; the .end columns exist only to position the corner labels. */
+/* Stacked layers: tennis-court photo underneath, sunglasses-frame tint overlay on top */
+.sunshade .ss-bg, .sunshade .ss-overlay{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none;
+}
+.sunshade .ss-bg{z-index:0}
+.sunshade .ss-overlay{z-index:1}
+.sunshade .end{position:relative; z-index:2; display:flex; align-items:flex-start; padding:16px; background:transparent}
+.sunshade .foot{z-index:2}
 .sunshade .tagend{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; background:rgba(10,12,15,.6); color:#eee; padding:6px 10px; border-radius:999px}
 .sunshade .foot{position:absolute; bottom:14px; left:16px; right:16px; display:flex; justify-content:space-between;
   font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.85)}
