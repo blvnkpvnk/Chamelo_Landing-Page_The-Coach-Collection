@@ -69,6 +69,8 @@
 /* ---------- Base -------------------------------------------------------- */
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
+/* Offset in-page anchor targets so the sticky header doesn't cover them */
+section[id],#hero{scroll-margin-top:72px}
 body{
   margin:0; background:var(--bg-dark); color:var(--ink-on-dark);
   font-family:var(--sans); font-weight:400; line-height:1.6;
@@ -189,25 +191,31 @@ h1{font-weight:900}
 .hero-cta{display:flex; flex-wrap:wrap; gap:14px; align-items:center}
 .hero-note{margin-top:16px; font-size:.9rem; color:var(--muted-on-dark)}
 .hero-note strong{color:var(--ink-on-dark)}
+/* ---- Mobile + tablet: give the hero image its own band on top (V6) ---- */
 @media (max-width:820px){
-  .hero{min-height:90vh}
-  .hero-video video{object-position:62% center}
-  /* text stacks over the video on mobile — darken top & bottom for legibility */
+  /* Stack the hero: Patrick's image up top, copy in the dark area below it,
+     so the text no longer sits over the image. */
+  .hero{display:block; min-height:auto}
+  .hero-video{position:relative; height:clamp(220px,42vh,400px)}
+  .hero-video video,
+  .hero-video .hero-media-img{object-position:center 28%}
+  /* Keep the image visible; fade only its lower edge into the copy area below. */
   .hero-scrim{background:
-    linear-gradient(180deg, rgba(7,8,10,.93) 0%, rgba(7,8,10,.62) 34%, rgba(7,8,10,.62) 60%, rgba(7,8,10,.95) 100%);}
+    linear-gradient(180deg, rgba(7,8,10,.05) 0%, rgba(7,8,10,.10) 52%, rgba(7,8,10,.72) 86%, rgba(7,8,10,1) 100%);}
+  .hero-inner{padding-block:clamp(28px,6vw,56px)}
   .hero-cta .btn{flex:1 1 auto; text-align:center}
 }
-/* ---- Mobile-only refinements (V5) ------------------------------------- */
+/* ---- Mobile-only refinements (V5/V6) --------------------------------- */
 @media (max-width:560px){
-  /* 1) Announcement bar: keep it to one line ("Limited First Release") */
+  /* Announcement bar: keep it to one line ("Limited First Release") */
   .announce{white-space:nowrap}
   .announce .a-rest{display:none}
-  /* 2) Hero headline on a single line */
-  .display{font-size:min(5.4vw,2rem); white-space:nowrap; line-height:1.15}
+  /* Hero headline: single line, larger, with a space after "One collection." */
+  .display{font-size:6vw; white-space:nowrap; line-height:1.15}
+  .display .hl{margin-left:.32em}
   .hero-br{display:none}
-  /* 3) Trim the empty space under the hero copy */
-  .hero{min-height:auto}
-  .hero-inner{padding-top:clamp(40px,10vw,72px); padding-bottom:clamp(24px,6vw,40px)}
+  /* Trim the empty space under the hero copy */
+  .hero-inner{padding-bottom:clamp(24px,6vw,40px)}
 }
 
 /* Interactive tint “lens” visual (also the hero motion element) */

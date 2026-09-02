@@ -157,7 +157,7 @@
       <div class="wrap hero-inner">
         <div class="hero-copy">
           <p class="eyebrow">The Coach Collection</p>
-          <h1 class="display">One collection.<br class="hero-br" /> <span class="hl">Every light.</span></h1>
+          <h1 class="display">One collection.<br class="hero-br" /><span class="hl">Every light.</span></h1>
           <p class="lead">
             Two frames created with <strong>Patrick Mouratoglou</strong>. Both run Eclipse™ instant-tint
             lenses that shift from light to dark in 0.1 seconds, so one frame covers full sun to indoors.
@@ -730,6 +730,21 @@
       });
     }
 
+    // Guarantee the hero buttons scroll to their sections even if a host
+    // (e.g. Checkout Champ) interferes with native in-page anchor jumps.
+    function initAnchorScroll() {
+      $all('.hero-cta a[href^="#"], a.brand[href^="#"]').forEach(function (a) {
+        a.addEventListener("click", function (e) {
+          var id = a.getAttribute("href");
+          if (!id || id === "#") return;
+          var target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+    }
+
     function initSticky() {
       var bar = $("#stickybar"), hero = $("#hero");
       if (!bar || !hero || !("IntersectionObserver" in window)) { if (bar) bar.classList.add("show"); return; }
@@ -777,7 +792,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-      initSlider(); initSelector(); initSticky(); initHeroVideo(); initCarousels(); setProduct("vantage");
+      initSlider(); initSelector(); initSticky(); initHeroVideo(); initCarousels(); initAnchorScroll(); setProduct("vantage");
     });
   })();
   </script>
