@@ -70,7 +70,7 @@
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}
 /* Offset in-page anchor targets so the sticky header doesn't cover them */
-section[id],#hero{scroll-margin-top:72px}
+section[id],#hero,#eclipse-tint{scroll-margin-top:72px}
 body{
   margin:0; background:var(--bg-dark); color:var(--ink-on-dark);
   font-family:var(--sans); font-weight:400; line-height:1.6;
