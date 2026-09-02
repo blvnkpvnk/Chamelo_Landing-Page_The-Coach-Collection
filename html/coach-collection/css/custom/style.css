@@ -305,12 +305,19 @@ h1{font-weight:900}
   position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/10;
   border:1px solid var(--line-dark); display:grid; grid-template-columns:1fr 1fr;
 }
-/* Stacked layers: tennis-court photo underneath, sunglasses-frame tint overlay on top */
-.sunshade .ss-bg, .sunshade .ss-overlay{
-  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none;
+/* Tennis-court photo underneath */
+.sunshade .ss-bg{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover; pointer-events:none; z-index:0;
 }
-.sunshade .ss-bg{z-index:0}
-.sunshade .ss-overlay{z-index:1}
+/* Tint layer: a black gradient (left half 50%, right half 20%) clipped to the
+   sunglasses-frame shape via the overlay PNG used as an alpha mask. The tint
+   level is supplied here, not baked into the PNG, so it lands exactly on target. */
+.sunshade .ss-tint{
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(90deg,rgba(0,0,0,.50) 0 50%,rgba(0,0,0,.20) 50% 100%);
+  -webkit-mask:url('https://assets.imagehub.io/8cd1c234-4fb6-4d8e-9895-9983457ddadb/1788262918360_Tint_Change_Overlay.png') center/cover no-repeat;
+          mask:url('https://assets.imagehub.io/8cd1c234-4fb6-4d8e-9895-9983457ddadb/1788262918360_Tint_Change_Overlay.png') center/cover no-repeat;
+}
 .sunshade .end{position:relative; z-index:2; display:flex; align-items:flex-start; padding:16px; background:transparent}
 .sunshade .foot{z-index:2}
 .sunshade .tagend{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; background:rgba(10,12,15,.6); color:#eee; padding:6px 10px; border-radius:999px}
