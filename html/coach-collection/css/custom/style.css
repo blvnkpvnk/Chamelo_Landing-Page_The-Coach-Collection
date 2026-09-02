@@ -197,6 +197,18 @@ h1{font-weight:900}
     linear-gradient(180deg, rgba(7,8,10,.93) 0%, rgba(7,8,10,.62) 34%, rgba(7,8,10,.62) 60%, rgba(7,8,10,.95) 100%);}
   .hero-cta .btn{flex:1 1 auto; text-align:center}
 }
+/* ---- Mobile-only refinements (V5) ------------------------------------- */
+@media (max-width:560px){
+  /* 1) Announcement bar: keep it to one line ("Limited First Release") */
+  .announce{white-space:nowrap}
+  .announce .a-rest{display:none}
+  /* 2) Hero headline on a single line */
+  .display{font-size:min(5.4vw,2rem); white-space:nowrap; line-height:1.15}
+  .hero-br{display:none}
+  /* 3) Trim the empty space under the hero copy */
+  .hero{min-height:auto}
+  .hero-inner{padding-top:clamp(40px,10vw,72px); padding-bottom:clamp(24px,6vw,40px)}
+}
 
 /* Interactive tint “lens” visual (also the hero motion element) */
 .lensbox{
