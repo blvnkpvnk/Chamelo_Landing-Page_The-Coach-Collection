@@ -196,11 +196,11 @@ h1{font-weight:900}
    doesn't depend on guessing either image's exact aspect ratio. */
 .hero-figures{
   display:flex; align-items:flex-end; justify-content:center;
-  height:clamp(280px,40vw,560px); pointer-events:none;
+  height:clamp(360px,58vh,780px); pointer-events:none;
 }
-.fig{height:100%; width:auto; object-fit:contain; display:block;
+.fig{height:100%; width:auto; object-fit:contain; display:block; flex-shrink:0;
   filter:drop-shadow(0 20px 40px rgba(0,0,0,.4))}
-.fig-vantage{z-index:1; margin-right:-16%}
+.fig-vantage{z-index:1; margin-right:-30%}
 .fig-ace{z-index:2}
 
 /* Slide-in on page load: Vantage settles first, then Ace slides in on top
@@ -224,7 +224,7 @@ h1{font-weight:900}
 /* Mobile + tablet: figures stack on top (source order) and stay centered */
 @media (max-width:820px){
   .hero{min-height:auto}
-  .hero-figures{height:clamp(220px,46vw,360px); margin-top:clamp(8px,3vw,20px)}
+  .hero-figures{height:clamp(260px,54vw,420px); margin-top:clamp(8px,3vw,20px)}
   .hero-inner{padding-top:clamp(12px,3vw,24px); padding-bottom:clamp(28px,6vw,56px)}
   .hero-cta .btn{flex:1 1 auto; text-align:center}
 }
