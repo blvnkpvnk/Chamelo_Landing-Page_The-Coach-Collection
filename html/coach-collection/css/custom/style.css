@@ -306,18 +306,10 @@ h1{font-weight:900}
   border:1px solid var(--line-dark); display:grid; grid-template-columns:1fr 1fr;
   background-size:cover; background-position:center; background-repeat:no-repeat;
 }
-.sunshade .end{position:relative; display:flex; align-items:flex-start; padding:16px}
-/* Translucent so the tennis photo shows through: left = sun end (bright), right = shade end (cool/dark) */
-.sunshade .sun{background:linear-gradient(160deg,rgba(232,223,174,.45),rgba(95,111,82,.30))}
-.sunshade .shade{background:linear-gradient(160deg,rgba(75,86,100,.45),rgba(20,26,30,.68))}
+.sunshade .end{position:relative; display:flex; align-items:flex-start; padding:16px; background:transparent}
+/* Sun/shade lighting and the sunglasses-frame tint overlay are baked into the
+   composite image; the .end columns exist only to position the corner labels. */
 .sunshade .tagend{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; background:rgba(10,12,15,.6); color:#eee; padding:6px 10px; border-radius:999px}
-/* Single lens spanning the split: left half 50% black tint (sun end), right half 25% black tint (shade end) */
-.sunshade .lensfloat{
-  position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
-  width:44%; aspect-ratio:2.2/1; border-radius:999px;
-  background:linear-gradient(90deg,rgba(0,0,0,.50) 0 50%,rgba(0,0,0,.25) 50% 100%);
-  border:1px solid rgba(255,255,255,.35); box-shadow:0 12px 30px rgba(0,0,0,.4);
-}
 .sunshade .foot{position:absolute; bottom:14px; left:16px; right:16px; display:flex; justify-content:space-between;
   font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.85)}
 .split .caption{font-family:var(--mono); font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted-on-dark); margin-top:12px; text-align:center}
