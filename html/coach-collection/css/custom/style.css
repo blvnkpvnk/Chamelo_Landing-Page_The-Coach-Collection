@@ -304,15 +304,18 @@ h1{font-weight:900}
 .sunshade{
   position:relative; border-radius:var(--radius); overflow:hidden; aspect-ratio:16/10;
   border:1px solid var(--line-dark); display:grid; grid-template-columns:1fr 1fr;
+  background-size:cover; background-position:center; background-repeat:no-repeat;
 }
 .sunshade .end{position:relative; display:flex; align-items:flex-start; padding:16px}
-.sunshade .sun{background:linear-gradient(160deg,#e8dfae,#5f6f52)}
-.sunshade .shade{background:linear-gradient(160deg,#5b6672,#2c3a34)}
+/* Translucent so the tennis photo shows through: left = sun end (bright), right = shade end (cool/dark) */
+.sunshade .sun{background:linear-gradient(160deg,rgba(232,223,174,.45),rgba(95,111,82,.30))}
+.sunshade .shade{background:linear-gradient(160deg,rgba(75,86,100,.45),rgba(20,26,30,.68))}
 .sunshade .tagend{font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase; background:rgba(10,12,15,.6); color:#eee; padding:6px 10px; border-radius:999px}
+/* Single lens spanning the split: left half 50% black tint (sun end), right half 25% black tint (shade end) */
 .sunshade .lensfloat{
   position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
   width:44%; aspect-ratio:2.2/1; border-radius:999px;
-  background:linear-gradient(120deg,rgba(214,172,92,.55),rgba(60,44,18,.75));
+  background:linear-gradient(90deg,rgba(0,0,0,.50) 0 50%,rgba(0,0,0,.25) 50% 100%);
   border:1px solid rgba(255,255,255,.35); box-shadow:0 12px 30px rgba(0,0,0,.4);
 }
 .sunshade .foot{position:absolute; bottom:14px; left:16px; right:16px; display:flex; justify-content:space-between;
@@ -357,8 +360,8 @@ h1{font-weight:900}
 /* Ace 4-feature grid (distinct captions — base-template bug fixed) */
 .fgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:clamp(14px,1.8vw,22px)}
 .fcard{background:var(--bg-card); border:1px solid var(--line-dark); border-radius:16px; overflow:hidden}
-.fcard .ic{background:linear-gradient(180deg,#20242a,#14171b); display:grid; place-items:center; padding:26px; aspect-ratio:16/10}
-.fcard .ic img{width:56px; height:56px}
+.fcard .ic{background:linear-gradient(180deg,#20242a,#14171b); aspect-ratio:16/10; overflow:hidden}
+.fcard .ic img{width:100%; height:100%; object-fit:cover; display:block}
 .fcard .txt{padding:20px}
 .fcard .num{font-family:var(--mono); font-size:11px; color:var(--blue-bright); letter-spacing:.1em}
 .fcard h4{margin:8px 0 8px; font-size:1.1rem; font-weight:700}
