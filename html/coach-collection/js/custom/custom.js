@@ -36,7 +36,7 @@
   /* ---------------- Eclipse tint slider ---------------- */
   // Continuous slider: value 0..1 crossfades the tint-change overlay image in
   // (0 = clear scene, 1 = full tinted overlay).
-  var TINT_LIGHT = 0.29, TINT_DARK = 0.75;
+  var TINT_LIGHT = 0.29, TINT_DARK = 0.50;
 
   function initSlider() {
     var slider = $("#tintSlider");
