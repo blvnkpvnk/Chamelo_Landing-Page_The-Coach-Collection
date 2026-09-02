@@ -298,10 +298,10 @@
 
         <!-- Interactive tint slider demo (motion + numeric/text state, not colour-only) -->
         <div class="eclipse-demo">
-          <div class="lensbox" id="eclipseLens" style="--tint:0">
+          <div class="lensbox" id="eclipseLens" style="--tint:.29">
             <img class="scene" src="https://assets.imagehub.io/8cd1c234-4fb6-4d8e-9895-9983457ddadb/1788251900864_Tennis_Court.webp" loading="lazy"
                  alt="View through the lens: a tennis court, shown getting darker as the tint slider moves" />
-            <img class="tint-img" src="https://assets.imagehub.io/8cd1c234-4fb6-4d8e-9895-9983457ddadb/1788253832558_Artboard_3_2x_016154a8_1153_40b1_a544_7c9dafb4cc08.webp" alt="" aria-hidden="true" loading="lazy" />
+            <img class="tint-img" src="https://assets.imagehub.io/8cd1c234-4fb6-4d8e-9895-9983457ddadb/1788262918360_Tint_Change_Overlay.png" alt="" aria-hidden="true" loading="lazy" />
             <div class="glare"></div>
             <span class="badge">0.1 sec adjustment</span>
           </div>
@@ -693,7 +693,7 @@
     function $all(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
 
     // Eclipse tint slider: value 0..1 crossfades the tint-change overlay in.
-    var TINT_LIGHT = 0, TINT_DARK = 1;
+    var TINT_LIGHT = 0.29, TINT_DARK = 0.95;
     function initSlider() {
       var slider = $("#tintSlider"); if (!slider) return;
       var lens = $("#eclipseLens");
