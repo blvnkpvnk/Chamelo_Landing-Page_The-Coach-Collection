@@ -160,6 +160,8 @@ h1{font-weight:900}
 .hero-video{position:absolute; inset:0; z-index:0}
 .hero-video video,
 .hero-video .hero-media-img{width:100%; height:100%; object-fit:cover; object-position:72% center; display:block}
+/* Mobile/tablet use a dedicated crop of the hero shot; desktop keeps the wide one */
+.hero-video .hero-media-img--mobile{display:none}
 .hero-scrim{position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
     linear-gradient(90deg, rgba(7,8,10,.97) 0%, rgba(7,8,10,.92) 24%, rgba(7,8,10,.62) 46%, rgba(7,8,10,.24) 66%, rgba(7,8,10,.04) 100%),
@@ -197,18 +199,10 @@ h1{font-weight:900}
      so the text no longer sits over the image. */
   .hero{display:block; min-height:auto}
   .hero-video{position:relative; height:clamp(220px,42vh,400px); overflow:hidden}
-  /* Center Patrick horizontally and zoom in so his head fills more of the
-     top of the band instead of being cropped at the frame edge (V7).
-     50% centers the crop on the SOURCE image's midpoint, not on Patrick —
-     his screenshot position (~43% of frame, still showing a second person
-     at the right edge) shows the source photo places him left of that
-     midpoint, so the anchor is shifted left to compensate. */
-  .hero-video video,
-  .hero-video .hero-media-img{
-    object-position:36% 18%;
-    transform:scale(1.25);
-    transform-origin:36% 18%;
-  }
+  /* Swap to the dedicated mobile/tablet hero shot — purpose-cropped, so no
+     zoom/offset hack is needed the way the shared desktop photo required. */
+  .hero-video .hero-media-img--desktop{display:none}
+  .hero-video .hero-media-img--mobile{display:block; object-position:center}
   /* Keep the image visible; fade only its lower edge into the copy area below. */
   .hero-scrim{background:
     linear-gradient(180deg, rgba(7,8,10,.05) 0%, rgba(7,8,10,.10) 52%, rgba(7,8,10,.72) 86%, rgba(7,8,10,1) 100%);}
