@@ -693,7 +693,7 @@
     function $all(s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); }
 
     // Eclipse tint slider: value 0..1 crossfades the tint-change overlay in.
-    var TINT_LIGHT = 0.29, TINT_DARK = 0.95;
+    var TINT_LIGHT = 0.29, TINT_DARK = 0.75;
     function initSlider() {
       var slider = $("#tintSlider"); if (!slider) return;
       var lens = $("#eclipseLens");
