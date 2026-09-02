@@ -59,7 +59,7 @@
   --line-light:rgba(0,0,0,.10);
 
   --maxw:1180px;
-  --pad:clamp(24px,6vw,64px);
+  --pad:clamp(32px,8vw,64px);
   --radius:18px;
 
   --mono:ui-monospace,"SF Mono","Cascadia Mono",Menlo,Consolas,"Liberation Mono",monospace;
