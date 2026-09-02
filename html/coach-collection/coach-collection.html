@@ -131,30 +131,29 @@
     <!-- ================= 1. SHARED HERO ================= -->
     <!-- NOTE: this hero copy is NEW (neither source page has a combined hero).
          Kept short and factual; every spec below is sourced from the two pages.
-         TODO: CONFIRM final combined hero headline/tagline with brand. -->
+         TODO: CONFIRM final combined hero headline/tagline with brand.
+         V8: split layout — copy + CTAs on the left, Patrick (Vantage Pro +
+         Ace) as two overlapping cutouts on the right on desktop; on mobile
+         and tablet the figures move above the copy, centered. Ace slides in
+         on top of and to the left of Vantage Pro on page load. -->
     <section class="hero s-dark" id="hero">
-      <!-- Full-bleed looping background video of Patrick Mouratoglou.
-           TODO: CONFIRM HERO VIDEO ASSET — this loop was assembled from the
-           supplied Patrick/Vantage Pro lifestyle stills (slow motion + crossfades)
-           as a stand-in. Swap in a real brand hero video when available; keep
-           it muted/loop/playsinline with the poster as the fallback frame. -->
-      <div class="hero-video">
-        <!-- TEMPORARY: static image placeholder in place of the looping hero
-             video, so the gradient scrim can be reviewed. Restore the <video>
-             block below (and the pause/play button) when the real video is ready. -->
-        <img id="heroImg" class="hero-media-img" src="https://assets.imagehub.io/8cd1c234-4fb6-4d8e-9895-9983457ddadb/1788244920345_Chamelo_Mouratoglou_Coach_Glasses_GK_12.webp"
-             alt="Patrick Mouratoglou coaching on court in Chamelo Vantage Pro aviators" />
-        <!--
-        <video id="heroVideo" autoplay muted loop playsinline preload="auto"
-               poster="images/lifestyle/patrick-hero-poster.jpg"
-               aria-label="Patrick Mouratoglou coaching on court in Chamelo Vantage Pro aviators">
-          <source src="videos/patrick-hero.mp4" type="video/mp4" />
-        </video>
-        -->
+      <div class="hero-bg">
+        <img src="https://assets.imagehub.io/8cd1c234-4fb6-4d8e-9895-9983457ddadb/1788335138417_Hero_background.webp"
+             alt="" aria-hidden="true" />
         <div class="hero-scrim"></div>
       </div>
 
       <div class="wrap hero-inner">
+        <!-- Figures come first in source order so they stack on top on mobile
+             (no CSS reorder needed there); desktop moves them to the right
+             via grid `order`. -->
+        <div class="hero-figures">
+          <img class="fig fig-vantage" src="https://assets.imagehub.io/8cd1c234-4fb6-4d8e-9895-9983457ddadb/1788335169047_Hero_Patrick_Vantage_Pro.webp"
+               alt="Patrick Mouratoglou wearing the Chamelo Vantage Pro acetate aviator" />
+          <img class="fig fig-ace" src="https://assets.imagehub.io/8cd1c234-4fb6-4d8e-9895-9983457ddadb/1788335157781_Hero_Patrick_Ace.webp"
+               alt="Patrick Mouratoglou wearing the Chamelo Ace tennis shield" />
+        </div>
+
         <div class="hero-copy">
           <p class="eyebrow">The Coach Collection</p>
           <h1 class="display">One collection.<br class="hero-br" /><span class="hl">Every light.</span></h1>
@@ -173,13 +172,6 @@
           <p class="hero-note"><strong>$20 to reserve.</strong> Deposit is applied to your final purchase.</p>
         </div>
       </div>
-
-      <!-- Pause/play control hidden while the hero uses a static image placeholder.
-      <button id="heroToggle" class="hero-toggle" type="button" aria-label="Pause background video" aria-pressed="true">
-        <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
-        <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </button>
-      -->
     </section>
 
     <!-- ================= Stat strip (shared, all sourced) ================= -->

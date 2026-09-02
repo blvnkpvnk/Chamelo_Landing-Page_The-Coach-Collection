@@ -153,19 +153,17 @@ h1{font-weight:900}
 .site-header .btn{padding:10px 20px; font-size:.9rem}
 @media (max-width:640px){ .brand .tag{display:none} }
 
-/* ---------- Hero -------------------------------------------------------- */
-.hero{position:relative; overflow:hidden; isolation:isolate;
-  min-height:clamp(560px,86vh,880px); display:flex; align-items:center}
-/* full-bleed background video */
-.hero-video{position:absolute; inset:0; z-index:0}
-.hero-video video,
-.hero-video .hero-media-img{width:100%; height:100%; object-fit:cover; object-position:72% center; display:block}
+/* ---------- Hero (V8: split layout — copy left, Patrick figures right) -- */
+.hero{position:relative; overflow:hidden; isolation:isolate; background:var(--bg-dark);
+  min-height:clamp(560px,82vh,860px); display:flex; align-items:center}
+.hero-bg{position:absolute; inset:0; z-index:0}
+.hero-bg img{width:100%; height:100%; object-fit:cover; object-position:center; display:block}
 .hero-scrim{position:absolute; inset:0; z-index:1; pointer-events:none;
   background:
-    linear-gradient(90deg, rgba(7,8,10,.97) 0%, rgba(7,8,10,.92) 24%, rgba(7,8,10,.62) 46%, rgba(7,8,10,.24) 66%, rgba(7,8,10,.04) 100%),
-    linear-gradient(0deg, rgba(7,8,10,.55) 0%, rgba(7,8,10,0) 42%);
+    linear-gradient(90deg, rgba(7,8,10,.9) 0%, rgba(7,8,10,.72) 30%, rgba(7,8,10,.32) 55%, rgba(7,8,10,.08) 100%),
+    linear-gradient(0deg, rgba(7,8,10,.45) 0%, rgba(7,8,10,0) 40%);
 }
-/* pause / play control */
+/* pause / play control — currently unused (hero has no video), kept for when one is restored */
 .hero-toggle{position:absolute; right:clamp(16px,3vw,34px); bottom:clamp(16px,3vw,34px); z-index:4;
   width:46px; height:46px; border-radius:50%; display:grid; place-items:center; cursor:pointer;
   background:rgba(10,12,15,.5); border:1px solid rgba(255,255,255,.3); color:#fff;
@@ -178,7 +176,8 @@ h1{font-weight:900}
 .hero-toggle.is-paused .ic-pause{display:none}
 .hero-toggle.is-paused .ic-play{display:block}
 
-.hero-inner{position:relative; z-index:2; width:100%; padding-block:clamp(48px,7vw,96px)}
+.hero-inner{position:relative; z-index:2; width:100%; padding-block:clamp(48px,7vw,96px);
+  display:grid; gap:clamp(28px,5vw,48px); align-items:center}
 .hero-copy{max-width:600px}
 .hero-copy h1{margin-bottom:22px}
 .hero-spec{
@@ -191,28 +190,41 @@ h1{font-weight:900}
 .hero-cta{display:flex; flex-wrap:wrap; gap:14px; align-items:center}
 .hero-note{margin-top:16px; font-size:.9rem; color:var(--muted-on-dark)}
 .hero-note strong{color:var(--ink-on-dark)}
-/* ---- Mobile + tablet: give the hero image its own band on top (V6) ---- */
+
+/* Two overlapping cutouts of Patrick — Ace layered on top of, and to the
+   left of, Vantage Pro. Centered as a pair via flex, so the composition
+   doesn't depend on guessing either image's exact aspect ratio. */
+.hero-figures{
+  display:flex; align-items:flex-end; justify-content:center;
+  height:clamp(280px,40vw,560px); pointer-events:none;
+}
+.fig{height:100%; width:auto; object-fit:contain; display:block;
+  filter:drop-shadow(0 20px 40px rgba(0,0,0,.4))}
+.fig-vantage{z-index:1; margin-right:-16%}
+.fig-ace{z-index:2}
+
+/* Slide-in on page load: Vantage settles first, then Ace slides in on top
+   of it. Pure CSS (no JS) so it always fires once the hero paints. */
+@media (prefers-reduced-motion:no-preference){
+  .fig-vantage{animation-name:figSlideRight; animation-duration:.85s;
+    animation-timing-function:cubic-bezier(.2,.7,.2,1); animation-delay:.1s; animation-fill-mode:both}
+  .fig-ace{animation-name:figSlideLeft; animation-duration:.85s;
+    animation-timing-function:cubic-bezier(.2,.7,.2,1); animation-delay:.5s; animation-fill-mode:both}
+}
+@keyframes figSlideRight{from{opacity:0; transform:translateX(-32px)} to{opacity:1; transform:translateX(0)}}
+@keyframes figSlideLeft{from{opacity:0; transform:translateX(32px)} to{opacity:1; transform:translateX(0)}}
+
+/* Desktop: copy on the left, figures on the right, side by side */
+@media (min-width:821px){
+  .hero-inner{grid-template-columns:1.05fr .95fr}
+  .hero-copy{order:1}
+  .hero-figures{order:2}
+}
+
+/* Mobile + tablet: figures stack on top (source order) and stay centered */
 @media (max-width:820px){
-  /* Stack the hero: Patrick's image up top, copy in the dark area below it,
-     so the text no longer sits over the image. */
-  .hero{display:block; min-height:auto}
-  .hero-video{position:relative; height:clamp(220px,42vh,400px); overflow:hidden}
-  /* Center Patrick horizontally and zoom in so his head fills more of the
-     top of the band instead of being cropped at the frame edge (V7).
-     50% centers the crop on the SOURCE image's midpoint, not on Patrick —
-     his screenshot position (~43% of frame, still showing a second person
-     at the right edge) shows the source photo places him left of that
-     midpoint, so the anchor is shifted left to compensate. */
-  .hero-video video,
-  .hero-video .hero-media-img{
-    object-position:36% 18%;
-    transform:scale(1.25);
-    transform-origin:36% 18%;
-  }
-  /* Keep the image visible; fade only its lower edge into the copy area below. */
-  .hero-scrim{background:
-    linear-gradient(180deg, rgba(7,8,10,.05) 0%, rgba(7,8,10,.10) 52%, rgba(7,8,10,.72) 86%, rgba(7,8,10,1) 100%);}
-  /* Pull the copy up closer to the image (V7) — top gap trimmed more than bottom */
+  .hero{min-height:auto}
+  .hero-figures{height:clamp(220px,46vw,360px); margin-top:clamp(8px,3vw,20px)}
   .hero-inner{padding-top:clamp(12px,3vw,24px); padding-bottom:clamp(28px,6vw,56px)}
   .hero-cta .btn{flex:1 1 auto; text-align:center}
 }
